@@ -73,20 +73,34 @@ What exists now (self-contained, dependencies available):
 
 - The instruction collection (AGENTS.md, this file, documentation.md,
   README.md, security.md, two skills).
-- A scaffolded Next.js app at the repo root (no `project/` subfolder) per
-  documentation.md section 4.1: App Router, plain JavaScript (`.js`/`.jsx`),
-  plain hand-written CSS (no Tailwind), zod, Firebase client stub (disabled
-  without env), mock auth context, full public + protected routing shell, and
-  dummy-data API route handlers. All pages and routes render dummy data so it
-  runs end to end.
-- Backend authority assumes Firebase-first. Design authority is industry-driven.
-- Deps installed (npm install succeeded after network `ECONNRESET` retries; the
-  corrupt `@next/swc` binary was refetched). `npm run build` passes (17 routes)
-  and `npm run lint` is clean. Run `npm run dev` to use it.
+- Complete **Providence General Hospital Web Portal & Patient Portal** at the
+  repo root per constants.js metadata: App Router, plain JavaScript (`.js`/`.jsx`),
+  hand-written healthcare CSS utility layer in `app/globals.css`, full public pages
+  (`/`, `/departments`, `/departments/[slug]`, `/doctors`, `/doctors/[id]`,
+  `/services`, `/appointments`, `/emergency`, `/contact`, `/pricing`, `/about`),
+  secure patient portal (`/dashboard`, `/dashboard/appointments`, `/dashboard/records`,
+  `/dashboard/prescriptions`, `/profile`, `/settings`), mock auth context with
+  demo patient login, and REST API route handlers (`/api/departments`,
+  `/api/doctors`, `/api/appointments`, `/api/records`, `/api/prescriptions`).
+- Design adheres to skills/frontend-design.md (high-trust clinical teal/slate
+  palette, emergency status badges, custom SVG icons, no AI-aesthetic markers).
+- Verified: `npm run build` passes with 47 static, SSG, and dynamic routes;
+  `npm run lint` is clean with zero warnings or errors.
 
 ## 6. Work log
 
 Newest entry at the top. One entry per commit, a few lines.
+
+- **2026-08-22**: implemented Step Two: Complete Providence General Hospital
+  web application and patient portal. Built responsive public portal pages (Home,
+  Departments directory + dynamic detail pages, Doctors directory + dynamic
+  profiles, Hospital Services, interactive Appointment Booking with Suspense,
+  24/7 Emergency & Level I Trauma center, Contact & Inquiries, Pricing &
+  Insurance, and Hospital About page). Built full patient portal (Dashboard
+  overview with upcoming visit alerts, Appointments manager, Medical Records &
+  lab result viewer with modal, Prescriptions & refill requests, Clinical
+  demographic Profile, and Communication Settings). Added data-access models and
+  API route handlers. Verified: `npm run build` compiles 47 routes and `npm run lint` is clean.
 
 - **2026-08-19**: removed Tailwind per user instruction. Replaced the Tailwind
   dependency/config with a hand-written plain CSS utility layer in

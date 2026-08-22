@@ -1,11 +1,20 @@
 import { LoginForm } from "@/components/auth/login-form";
+import { Card } from "@/components/ui/card";
+
+export const metadata = {
+  title: "Patient Portal Login | Providence General Hospital",
+  description: "Sign in to your confidential patient healthcare portal.",
+};
 
 export default function LoginPage() {
   return (
-    <div>
-      <h1 className="mb-1 text-2xl font-semibold">Sign in</h1>
-      <p className="mb-6 text-sm text-mute">Welcome back to your workspace.</p>
+    <Card className="p-6 sm:p-8">
+      <h1 className="text-xl font-bold text-fg mb-1">Patient Sign In</h1>
+      <p className="text-xs text-mute mb-6">
+        Enter your registered email and password to access medical records, test
+        results, and appointments.
+      </p>
       <LoginForm />
-    </div>
+    </Card>
   );
 }

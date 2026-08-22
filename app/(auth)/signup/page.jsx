@@ -1,11 +1,20 @@
 import { SignupForm } from "@/components/auth/signup-form";
+import { Card } from "@/components/ui/card";
+
+export const metadata = {
+  title: "Register Patient Account | Providence General Hospital",
+  description: "Create your confidential patient healthcare portal account.",
+};
 
 export default function SignupPage() {
   return (
-    <div>
-      <h1 className="mb-1 text-2xl font-semibold">Create account</h1>
-      <p className="mb-6 text-sm text-mute">Start building in under a minute.</p>
+    <Card className="p-6 sm:p-8">
+      <h1 className="text-xl font-bold text-fg mb-1">Patient Registration</h1>
+      <p className="text-xs text-mute mb-6">
+        Register for secure online access to your Providence Health medical records,
+        lab results, and appointments.
+      </p>
       <SignupForm />
-    </div>
+    </Card>
   );
 }

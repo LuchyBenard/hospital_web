@@ -31,27 +31,27 @@ export function SignupForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="space-y-2">
-      <Field label="Name" htmlFor="name">
+    <form onSubmit={onSubmit} className="space-y-4">
+      <Field label="Full Legal Name" htmlFor="name">
         <Input
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Ada Quinn"
+          placeholder="Eleanor Vance"
           required
         />
       </Field>
-      <Field label="Email" htmlFor="email">
+      <Field label="Email Address" htmlFor="email">
         <Input
           id="email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@example.com"
+          placeholder="eleanor@example.com"
           required
         />
       </Field>
-      <Field label="Password" htmlFor="password">
+      <Field label="Create Password" htmlFor="password">
         <Input
           id="password"
           type="password"
@@ -61,16 +61,16 @@ export function SignupForm() {
           required
         />
       </Field>
-      {error ? <p className="text-sm text-danger">{error}</p> : null}
+      {error ? <p className="text-xs font-semibold text-danger">{error}</p> : null}
       <Button type="submit" className="w-full" disabled={busy}>
-        {busy ? "Creating..." : "Create account"}
+        {busy ? "Creating account..." : "Complete Registration"}
       </Button>
-      <p className="text-sm text-mute">
-        Already have an account?{" "}
-        <Link href="/login" className="text-accent">
-          Sign in
+      <div className="flex items-center justify-between pt-2 text-xs text-mute">
+        <span>Already registered?</span>
+        <Link href="/login" className="font-semibold text-accent hover:underline">
+          Sign In
         </Link>
-      </p>
+      </div>
     </form>
   );
 }
