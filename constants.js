@@ -64,13 +64,12 @@ export const emergencyHotlines = [
 
 export const publicNav = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "Departments", href: "/departments" },
   { label: "Doctors", href: "/doctors" },
-  { label: "Services", href: "/services" },
-  { label: "Appointments", href: "/appointments" },
-  { label: "Emergency", href: "/emergency" },
+  { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
-  { label: "Patient Login", href: "/login" },
 ];
 
 export const appNav = [
