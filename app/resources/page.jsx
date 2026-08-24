@@ -1,10 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { DownloadButton } from "@/components/hospital/download-button";
 import Link from "next/link";
 import { hospitalInfo } from "@/constants";
 
 export const metadata = {
-  title: "Patient & Health Resources | Providence General Hospital",
+  title: "Patient & Health Resources",
   description:
     "Patient guides, hospital admission checklists, pre-surgery instructions, downloadable forms, and wellness education.",
 };
@@ -157,15 +158,7 @@ export default function ResourcesPage() {
                   {form.code} &bull; {form.format}
                 </div>
               </div>
-              <Button
-                size="sm"
-                variant="secondary"
-                onClick={() =>
-                  alert(`Downloading official clinical PDF: ${form.name}`)
-                }
-              >
-                Download
-              </Button>
+              <DownloadButton name={form.name} />
             </Card>
           ))}
         </div>

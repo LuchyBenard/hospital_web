@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export const metadata = {
-  title: "24/7 Emergency & Level I Trauma Center | Providence General Hospital",
+  title: "24/7 Emergency & Level I Trauma Center",
   description:
     "Round-the-clock emergency medical services, rapid resuscitation bays, certified trauma surgeons, and acute stroke triage.",
 };

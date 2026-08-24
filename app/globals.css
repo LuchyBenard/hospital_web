@@ -392,18 +392,18 @@ select.input-clinical:focus, textarea.input-clinical:focus {
 }
 
 /* Design tokens - Healthcare industry (skills/frontend-design.md)
-   Trust teal, clinical slate navy, clean white surfaces, calm off-white bg,
-   emergency crimson for critical trauma/hotlines. */
+   Deep clinical navy for authority and trust, cool paper background,
+   slate ink, emergency crimson reserved for critical trauma/hotlines. */
 :root {
-  --color-bg: #f8fafc;
+  --color-bg: #f5f7fa;
   --color-surface: #ffffff;
-  --color-fg: #0f172a;
-  --color-mute: #64748b;
-  --color-line: #e2e8f0;
+  --color-fg: #16273b;
+  --color-mute: #5c6f84;
+  --color-line: #dce3ec;
 
-  --color-accent: #0f766e;
-  --color-accent-dark: #115e59;
-  --color-accent-light: #f0fdfa;
+  --color-accent: #1a4e8a;
+  --color-accent-dark: #143a68;
+  --color-accent-light: #edf3fb;
   --color-accent-fg: #ffffff;
 
   --color-emergency: #b91c1c;
@@ -419,8 +419,10 @@ select.input-clinical:focus, textarea.input-clinical:focus {
   --color-warning: #b45309;
   --color-warning-light: #fffbeb;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
+  /* next/font faces injected on <html>; system stacks are the fallback */
+  --font-sans: var(--font-source), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: var(--font-lora), Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
     "Liberation Mono", monospace;
 
@@ -460,9 +462,13 @@ h6 {
 
 h1 {
   font-size: 2.25rem;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
 }
 h2 {
   font-size: 1.75rem;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
 }
 h3 {
   font-size: 1.25rem;
@@ -486,10 +492,11 @@ a:hover {
 
 /* Type scale steps, explicit */
 .t-display {
+  font-family: var(--font-display);
   font-size: 2.75rem;
   line-height: 1.1;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-weight: 600;
 }
 .t-lead {
   font-size: 1.125rem;
@@ -508,4 +515,26 @@ a:hover {
   margin: 0 auto;
   padding-left: var(--space-6);
   padding-right: var(--space-6);
+}
+
+/* Loading skeletons (app/loading.jsx, (app)/loading.jsx) */
+.skeleton {
+  background-color: var(--color-line);
+  border-radius: var(--radius);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    opacity: 0.6;
+  }
 }

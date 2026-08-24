@@ -2,7 +2,7 @@ import { LoginForm } from "@/components/auth/login-form";
 import { Card } from "@/components/ui/card";
 
 export const metadata = {
-  title: "Patient Portal Login | Providence General Hospital",
+  title: "Patient Portal Login",
   description: "Sign in to your confidential patient healthcare portal.",
 };
 

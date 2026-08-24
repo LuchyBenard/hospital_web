@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 
 export function DepartmentCard({ department }) {
@@ -7,6 +8,13 @@ export function DepartmentCard({ department }) {
   return (
     <Card className="flex flex-col justify-between transition-shadow hover:shadow-md">
       <div>
+        <Image
+          src={`/images/departments/${department.slug}.png`}
+          alt={`${department.name} at Providence General Hospital`}
+          width={1200}
+          height={560}
+          className="mb-4 h-auto w-full rounded-lg border border-line"
+        />
         <div className="mb-3 flex items-center justify-between">
           <div className="flex h-10 w-10 items-center justify-center rounded-md bg-accent-light text-accent">
             <svg

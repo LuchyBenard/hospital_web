@@ -84,8 +84,20 @@ What exists now (self-contained, dependencies available):
   `/api/doctors`, `/api/appointments`, `/api/records`, `/api/prescriptions`).
 - Design adheres to skills/frontend-design.md (high-trust clinical teal/slate
   palette, emergency status badges, custom SVG icons, no AI-aesthetic markers).
-- Verified: `npm run build` passes with 47 static, SSG, and dynamic routes;
-  `npm run lint` is clean with zero warnings or errors.
+- **Tier 1 standard-website layer complete**: brand assets (`app/icon.png`,
+  `app/apple-icon.png`, `app/favicon.ico`, `app/opengraph-image.png`,
+  `public/logo.svg`), `robots.js`, `sitemap.js`, `not-found.jsx`, `error.jsx`,
+  root + portal `loading.jsx` skeletons, full root metadata (metadataBase,
+  title template `%s | Providence Health`, OG/Twitter cards, viewport/themeColor),
+  and real fonts via next/font (Source Sans 3 body, Lora display) wired through
+  the `--font-sans` / `--font-display` tokens. Metadata-carrying server layouts
+  added for the four client pages (/doctors, /services, /contact, /appointments).
+  Fixed an RSC violation on `/resources` (onClick from a server page) with a
+  client island (`components/hospital/download-button.jsx`).
+- Verified: `npm run build` passes with all routes static (route table includes
+  /robots.txt, /sitemap.xml, /icon.png, /apple-icon.png, /opengraph-image.png);
+  `npm run lint` is clean with zero warnings or errors. Site URL override lives
+  in `NEXT_PUBLIC_SITE_URL`.
 
 ## 6. Work log
 

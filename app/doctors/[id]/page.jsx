@@ -11,9 +11,9 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const doctor = getDoctorById(params.id);
-  if (!doctor) return { title: "Doctor Not Found | Providence Health" };
+  if (!doctor) return { title: "Doctor Not Found" };
   return {
-    title: `${doctor.name} (${doctor.specialty}) | Providence General Hospital`,
+    title: `${doctor.name} (${doctor.specialty})`,
     description: doctor.bio,
   };
 }

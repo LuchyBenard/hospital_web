@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "About Us | Providence General Hospital",
+  title: "About Us",
   description:
     "Learn about Providence General Hospital's 40-year history of clinical excellence, Magnet nursing recognition, and community health mission.",
 };

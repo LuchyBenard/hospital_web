@@ -2,7 +2,7 @@ import { SignupForm } from "@/components/auth/signup-form";
 import { Card } from "@/components/ui/card";
 
 export const metadata = {
-  title: "Register Patient Account | Providence General Hospital",
+  title: "Register Patient Account",
   description: "Create your confidential patient healthcare portal account.",
 };
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { hospitalInfo } from "@/constants";
 
 export const metadata = {
-  title: "Insurance & Transparent Billing | Providence General Hospital",
+  title: "Insurance & Transparent Billing",
   description:
     "Review accepted health insurance networks, transparent consultation fee schedules, and financial assistance programs.",
 };

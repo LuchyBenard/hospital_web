@@ -1,6 +1,13 @@
 // Single source of truth for hospital metadata, navigation menus,
 // departments, doctors, services, and demo data.
 
+// Canonical deployment URL. Override with NEXT_PUBLIC_SITE_URL in env.
+export const siteConfig = {
+  name: "Providence General Hospital",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.providencegeneral.org",
+  ogImage: "/opengraph-image.png",
+};
+
 export const hospitalInfo = {
   name: "Providence General Hospital",
   shortName: "Providence Health",

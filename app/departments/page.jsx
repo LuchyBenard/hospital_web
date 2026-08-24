@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "Clinical Departments | Providence General Hospital",
+  title: "Clinical Departments",
   description:
     "Explore our 8 specialized medical departments, clinical teams, and advanced surgical facilities.",
 };

@@ -4,6 +4,7 @@ import { DoctorCard } from "@/components/hospital/doctor-card";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
@@ -12,9 +13,9 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const dept = getDepartmentBySlug(params.slug);
-  if (!dept) return { title: "Department Not Found | Providence Health" };
+  if (!dept) return { title: "Department Not Found" };
   return {
-    title: `${dept.name} | Providence General Hospital`,
+    title: dept.name,
     description: dept.description,
   };
 }
