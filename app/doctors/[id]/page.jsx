@@ -40,20 +40,23 @@ export default function DoctorProfilePage({ params }) {
         <div className="space-y-8">
           <Card className="p-6 sm:p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <span className="badge badge-accent mb-2">{doctor.specialty}</span>
-                <h1 className="text-2xl sm:text-3xl font-bold text-fg mb-1">
-                  {doctor.name}
-                </h1>
-                <p className="text-sm font-medium text-mute mb-3">{doctor.title}</p>
-                {dept && (
-                  <Link
-                    href={`/departments/${dept.slug}`}
-                    className="text-xs font-semibold text-accent hover:underline"
-                  >
-                    Department: {dept.name} &rarr;
-                  </Link>
-                )}
+              <div className="flex items-start gap-4">
+                <DoctorAvatar name={doctor.name} size={64} />
+                <div>
+                  <span className="badge badge-accent mb-2">{doctor.specialty}</span>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-fg mb-1">
+                    {doctor.name}
+                  </h1>
+                  <p className="text-sm font-medium text-mute mb-3">{doctor.title}</p>
+                  {dept && (
+                    <Link
+                      href={`/departments/${dept.slug}`}
+                      className="text-xs font-semibold text-accent hover:underline"
+                    >
+                      Department: {dept.name} &rarr;
+                    </Link>
+                  )}
+                </div>
               </div>
 
               <div className="flex sm:flex-col items-end gap-2 shrink-0">
@@ -62,9 +65,10 @@ export default function DoctorProfilePage({ params }) {
                     width="14"
                     height="14"
                     viewBox="0 0 24 24"
-                    fill="#0f766e"
-                    stroke="#0f766e"
+                    fill="currentColor"
+                    stroke="currentColor"
                     strokeWidth="1"
+                    className="text-accent"
                   >
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                   </svg>

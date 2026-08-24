@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Card } from "@/components/ui/card";
+import { DepartmentIcon } from "@/components/hospital/department-icon";
 
 export function DepartmentCard({ department }) {
   if (!department) return null;
@@ -8,30 +8,14 @@ export function DepartmentCard({ department }) {
   return (
     <Card className="flex flex-col justify-between transition-shadow hover:shadow-md">
       <div>
-        <Image
-          src={`/images/departments/${department.slug}.png`}
-          alt={`${department.name} at Providence General Hospital`}
-          width={1200}
-          height={560}
-          className="mb-4 h-auto w-full rounded-lg border border-line"
-        />
-        <div className="mb-3 flex items-center justify-between">
-          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-accent-light text-accent">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
-          </div>
+        <div className="relative mb-4 flex h-24 items-center justify-center rounded-lg bg-accent-light">
+          <span className="text-accent">
+            <DepartmentIcon name={department.icon} size={34} />
+          </span>
           {department.emergencySupported && (
-            <span className="badge badge-emergency text-xs">24/7 Acute</span>
+            <span className="badge badge-emergency absolute right-3 top-3 text-xs">
+              24/7 Acute
+            </span>
           )}
         </div>
 

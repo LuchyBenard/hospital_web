@@ -392,18 +392,18 @@ select.input-clinical:focus, textarea.input-clinical:focus {
 }
 
 /* Design tokens - Healthcare industry (skills/frontend-design.md)
-   Deep clinical navy for authority and trust, cool paper background,
-   slate ink, emergency crimson reserved for critical trauma/hotlines. */
+   Heritage clinical blue (trust, calm authority), deep navy ink, porcelain
+   surfaces, restrained crimson reserved strictly for emergency semantics. */
 :root {
-  --color-bg: #f5f7fa;
+  --color-bg: #f5f7fb;
   --color-surface: #ffffff;
-  --color-fg: #16273b;
-  --color-mute: #5c6f84;
-  --color-line: #dce3ec;
+  --color-fg: #0e2038;
+  --color-mute: #5b6b81;
+  --color-line: #dbe3ee;
 
-  --color-accent: #1a4e8a;
-  --color-accent-dark: #143a68;
-  --color-accent-light: #edf3fb;
+  --color-accent: #1e56a0;
+  --color-accent-dark: #163f75;
+  --color-accent-light: #edf3fa;
   --color-accent-fg: #ffffff;
 
   --color-emergency: #b91c1c;
@@ -413,8 +413,8 @@ select.input-clinical:focus, textarea.input-clinical:focus {
   --color-success: #15803d;
   --color-success-light: #f0fdf4;
 
-  --color-info: #0369a1;
-  --color-info-light: #f0f9ff;
+  --color-info: #0e6aa8;
+  --color-info-light: #eff7fd;
 
   --color-warning: #b45309;
   --color-warning-light: #fffbeb;
@@ -516,6 +516,13 @@ a:hover {
   padding-left: var(--space-6);
   padding-right: var(--space-6);
 }
+
+/* Dark panel helpers (auth split-screen, dark banners) */
+.bg-fg { background-color: var(--color-fg); }
+.text-white { color: #ffffff; }
+.text-onDark { color: rgba(255, 255, 255, 0.85); }
+.text-onDark-muted { color: rgba(255, 255, 255, 0.62); }
+.border-onDark { border-color: rgba(255, 255, 255, 0.16); }
 
 /* Loading skeletons (app/loading.jsx, (app)/loading.jsx) */
 .skeleton {

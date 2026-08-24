@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" role="img" aria-label="Illustration of the Providence General Hospital campus with an ambulance at the emergency bay">
+  <rect width="560" height="420" rx="16" fill="#EDF3FA"/>
+
+  <!-- clouds -->
+  <rect x="392" y="52" width="112" height="22" rx="11" fill="#FFFFFF" opacity="0.85"/>
+  <rect x="424" y="82" width="76" height="18" rx="9" fill="#FFFFFF" opacity="0.7"/>
+
+  <!-- ground -->
+  <rect x="24" y="352" width="512" height="3" rx="1.5" fill="#B9CCE4"/>
+
+  <!-- trees -->
+  <rect x="66" y="332" width="8" height="22" rx="3" fill="#16355C" opacity="0.55"/>
+  <circle cx="70" cy="316" r="26" fill="#7FA6DC" opacity="0.6"/>
+  <rect x="104" y="340" width="7" height="16" rx="3" fill="#16355C" opacity="0.5"/>
+  <circle cx="107" cy="328" r="18" fill="#7FA6DC" opacity="0.5"/>
+
+  <!-- main tower -->
+  <rect x="150" y="110" width="150" height="242" fill="#FFFFFF" stroke="#16355C" stroke-width="2.5"/>
+  <rect x="142" y="100" width="166" height="12" rx="5" fill="#16355C"/>
+
+  <!-- cross sign -->
+  <rect x="203" y="62" width="44" height="44" rx="9" fill="#1E56A0"/>
+  <path d="M218.6 72h12.8v11.6H243v12.8h-11.6V108h-12.8V96.4H207V83.6h11.6Z" fill="#FFFFFF"/>
+
+  <!-- tower windows -->
+  <g fill="#DCE7F5">
+    <rect x="164" y="128" width="14" height="18" rx="3"/><rect x="190" y="128" width="14" height="18" rx="3"/><rect x="216" y="128" width="14" height="18" rx="3"/><rect x="242" y="128" width="14" height="18" rx="3"/><rect x="268" y="128" width="14" height="18" rx="3"/>
+    <rect x="164" y="162" width="14" height="18" rx="3"/><rect x="216" y="162" width="14" height="18" rx="3"/><rect x="268" y="162" width="14" height="18" rx="3"/>
+    <rect x="190" y="196" width="14" height="18" rx="3"/><rect x="242" y="196" width="14" height="18" rx="3"/>
+    <rect x="164" y="230" width="14" height="18" rx="3"/><rect x="216" y="230" width="14" height="18" rx="3"/><rect x="268" y="230" width="14" height="18" rx="3"/>
+    <rect x="190" y="264" width="14" height="18" rx="3"/><rect x="242" y="264" width="14" height="18" rx="3"/>
+  </g>
+  <g fill="#7FA6DC">
+    <rect x="190" y="162" width="14" height="18" rx="3"/><rect x="164" y="196" width="14" height="18" rx="3"/><rect x="242" y="162" width="14" height="18" rx="3"/>
+  </g>
+
+  <!-- side wing -->
+  <rect x="300" y="190" width="122" height="162" fill="#FFFFFF" stroke="#9DB6D8" stroke-width="2.5"/>
+  <rect x="294" y="182" width="134" height="10" rx="5" fill="#16355C" opacity="0.85"/>
+  <g fill="#DCE7F5">
+    <rect x="314" y="206" width="13" height="15" rx="3"/><rect x="339" y="206" width="13" height="15" rx="3"/><rect x="364" y="206" width="13" height="15" rx="3"/><rect x="389" y="206" width="13" height="15" rx="3"/>
+    <rect x="314" y="236" width="13" height="15" rx="3"/><rect x="364" y="236" width="13" height="15" rx="3"/>
+    <rect x="339" y="266" width="13" height="15" rx="3"/><rect x="389" y="266" width="13" height="15" rx="3"/>
+    <rect x="314" y="296" width="13" height="15" rx="3"/><rect x="364" y="296" width="13" height="15" rx="3"/>
+  </g>
+  <rect x="339" y="236" width="13" height="15" rx="3" fill="#7FA6DC"/>
+
+  <!-- entrance -->
+  <rect x="196" y="290" width="58" height="10" rx="5" fill="#16355C"/>
+  <rect x="208" y="300" width="34" height="52" rx="3" fill="#1E56A0" opacity="0.16"/>
+  <rect x="208" y="300" width="34" height="52" rx="3" fill="none" stroke="#1E56A0" stroke-width="2"/>
+  <line x1="225" y1="300" x2="225" y2="352" stroke="#1E56A0" stroke-width="2"/>
+
+  <!-- ambulance -->
+  <g>
+    <rect x="472" y="256" width="13" height="10" rx="3" fill="#1E56A0"/>
+    <rect x="485" y="256" width="13" height="10" rx="3" fill="#B91C1C"/>
+    <rect x="438" y="264" width="94" height="58" rx="10" fill="#FFFFFF" stroke="#0E2038" stroke-width="2.5"/>
+    <rect x="438" y="292" width="94" height="10" fill="#B91C1C"/>
+    <rect x="452" y="272" width="22" height="22" rx="5" fill="#B91C1C"/>
+    <path d="M460.2 276h5.6v5h5v5.6h-5v5h-5.6v-5h-5v-5.6h5Z" fill="#FFFFFF"/>
+    <circle cx="462" cy="326" r="13" fill="#16355C"/>
+    <circle cx="462" cy="326" r="5" fill="#EDF3FA"/>
+    <circle cx="514" cy="326" r="13" fill="#16355C"/>
+    <circle cx="514" cy="326" r="5" fill="#EDF3FA"/>
+  </g>
+
+  <!-- pulse line -->
+  <polyline points="40,388 138,388 168,360 204,404 250,344 300,400 336,378 382,388 520,388"
+    fill="none" stroke="#1E56A0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

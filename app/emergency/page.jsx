@@ -1,6 +1,7 @@
 import { emergencyHotlines, hospitalInfo } from "@/constants";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
@@ -14,34 +15,46 @@ export default function EmergencyPage() {
     <main className="container-content py-12 sm:py-16">
       {/* Emergency Header */}
       <div className="mb-10 rounded-xl border border-emergency bg-emergency-light p-6 sm:p-10">
-        <div className="max-w-3xl">
-          <div className="flex items-center gap-2 mb-2 text-xs font-bold text-emergency">
-            <span className="h-2.5 w-2.5 rounded-full bg-emergency animate-ping" />
-            24/7/365 IMMEDIATE RESUSCITATION & TRAUMA TRIAGE
+        <div className="grid items-center gap-8 lg:grid-cols-[1.5fr_1fr]">
+          <div>
+            <div className="flex items-center gap-2 mb-2 text-xs font-bold text-emergency">
+              <span className="h-2.5 w-2.5 rounded-full bg-emergency animate-ping" />
+              24/7/365 IMMEDIATE RESUSCITATION &amp; TRAUMA TRIAGE
+            </div>
+            <h1 className="text-2xl sm:text-4xl font-bold text-fg mb-4">
+              Emergency Medicine &amp; Level I Trauma Center
+            </h1>
+            <p className="text-sm sm:text-base leading-relaxed text-fg mb-6">
+              If you are experiencing a life-threatening medical emergency, including
+              severe chest pain, signs of stroke, difficulty breathing, or severe
+              trauma, call our direct dispatch hotline or dial 911 immediately.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={`tel:${hospitalInfo.phone.emergency.replace(/[^0-9]/g, "")}`}
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-emergency px-6 py-3 text-sm font-bold text-white shadow-sm hover:opacity-90"
+              >
+                Call Trauma Dispatch: {hospitalInfo.phone.emergency}
+              </a>
+              <a
+                href={hospitalInfo.address.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md border border-line bg-surface px-6 py-3 text-sm font-semibold text-fg hover:bg-bg"
+              >
+                Emergency Directions &amp; GPS &rarr;
+              </a>
+            </div>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-bold text-fg mb-4">
-            Emergency Medicine & Level I Trauma Center
-          </h1>
-          <p className="text-sm sm:text-base leading-relaxed text-fg mb-6">
-            If you are experiencing a life-threatening medical emergency—including
-            severe chest pain, signs of stroke, difficulty breathing, or severe
-            trauma—please call our direct dispatch hotline or dial 911 immediately.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={`tel:${hospitalInfo.phone.emergency.replace(/[^0-9]/g, "")}`}
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-emergency px-6 py-3 text-sm font-bold text-white shadow-sm hover:opacity-90"
-            >
-              Call Trauma Dispatch: {hospitalInfo.phone.emergency}
-            </a>
-            <a
-              href={hospitalInfo.address.directionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-md border border-line bg-surface px-6 py-3 text-sm font-semibold text-fg hover:bg-bg"
-            >
-              Emergency Directions & GPS &rarr;
-            </a>
+          <div className="hidden lg:block">
+            <Image
+              src="/images/emergency-response.svg"
+              alt="Illustration of a Providence General ambulance responding to an emergency call"
+              width={560}
+              height={260}
+              unoptimized
+              className="h-auto w-full"
+            />
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { hospitalInfo, departments, doctors, services, emergencyHotlines } from "@/constants";
 import { DepartmentCard } from "@/components/hospital/department-card";
 import { DoctorCard } from "@/components/hospital/doctor-card";
@@ -46,8 +47,20 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Quick Access Card */}
-            <div className="space-y-4 rounded-xl border border-line bg-bg p-6 shadow-sm">
+            {/* Campus Art + Quick Access Card */}
+            <div className="space-y-4">
+              <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-sm">
+                <Image
+                  src="/images/hero-facility.svg"
+                  alt="Illustration of the Providence General Hospital campus with an ambulance at the emergency bay"
+                  width={560}
+                  height={420}
+                  priority
+                  unoptimized
+                  className="h-auto w-full"
+                />
+              </div>
+              <div className="space-y-4 rounded-xl border border-line bg-bg p-6 shadow-sm">
               <div className="flex items-center justify-between border-b border-line pb-4">
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wider text-mute">
@@ -101,6 +114,7 @@ export default function HomePage() {
                     {hospitalInfo.phone.emergency}
                   </a>
                 </div>
+              </div>
               </div>
             </div>
           </div>
@@ -258,13 +272,13 @@ export default function HomePage() {
       {/* Patient Portal CTA Banner */}
       <section className="border-t border-line bg-surface py-16">
         <div className="container-content">
-          <div className="rounded-xl border border-line bg-bg p-8 sm:p-12">
-            <div className="max-w-2xl">
+          <div className="grid items-center gap-10 rounded-xl border border-line bg-bg p-8 sm:p-12 lg:grid-cols-[1.35fr_1fr]">
+            <div>
               <span className="badge badge-accent mb-3">Secure Patient Portal</span>
               <h2 className="text-2xl font-bold text-fg sm:text-3xl mb-4">
-                Access your medical records and lab reports anytime.
+                Your medical records, one secure sign-in away
               </h2>
-              <p className="t-lead text-sm sm:text-base mb-6">
+              <p className="t-lead text-sm sm:text-base mb-6 max-w-xl">
                 View upcoming appointments, download diagnostic imaging reports,
                 review active prescriptions, and communicate directly with your
                 care team.
@@ -279,6 +293,16 @@ export default function HomePage() {
                   </Button>
                 </Link>
               </div>
+            </div>
+            <div className="hidden overflow-hidden rounded-lg lg:block">
+              <Image
+                src="/images/portal-care.svg"
+                alt="Illustration of a medical record protected by a security shield"
+                width={480}
+                height={360}
+                unoptimized
+                className="h-auto w-full"
+              />
             </div>
           </div>
         </div>
