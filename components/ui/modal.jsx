@@ -21,12 +21,12 @@ export function Modal({ open, onClose, title, children, className }) {
       aria-modal="true"
     >
       <div
-        className="absolute inset-0 bg-fg/30 backdrop-blur-sm"
+        className="modal-backdrop-in absolute inset-0 bg-fg/30 backdrop-blur-sm"
         onClick={onClose}
       />
       <div
         className={cn(
-          "relative z-10 w-full max-w-md rounded-lg border border-line bg-surface p-6 shadow-lg",
+          "modal-panel-in relative z-10 w-full max-w-md rounded-lg border border-line bg-surface p-6 shadow-lg",
           className
         )}
       >

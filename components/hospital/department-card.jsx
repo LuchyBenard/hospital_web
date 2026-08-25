@@ -6,7 +6,7 @@ export function DepartmentCard({ department }) {
   if (!department) return null;
 
   return (
-    <Card className="flex flex-col justify-between transition-shadow hover:shadow-md">
+    <Card className="flex flex-col justify-between h-full lift transition-shadow hover:shadow-md">
       <div>
         <div className="relative mb-4 flex h-24 items-center justify-center rounded-lg bg-accent-light">
           <span className="text-accent">

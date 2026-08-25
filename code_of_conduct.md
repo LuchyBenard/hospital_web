@@ -82,8 +82,19 @@ What exists now (self-contained, dependencies available):
   `/dashboard/prescriptions`, `/profile`, `/settings`), mock auth context with
   demo patient login, and REST API route handlers (`/api/departments`,
   `/api/doctors`, `/api/appointments`, `/api/records`, `/api/prescriptions`).
-- Design adheres to skills/frontend-design.md (high-trust clinical teal/slate
-  palette, emergency status badges, custom SVG icons, no AI-aesthetic markers).
+- Design adheres to skills/frontend-design.md. **Palette v2 (user-directed):
+  heritage clinical blue** `--color-accent #1e56a0` on deep navy ink
+  `#0e2038`, porcelain surfaces; crimson strictly semantic for emergency.
+  Brand PNGs and logo.svg regenerated in the blue.
+- **Imagery system**: flat vector illustrations in `public/images/`
+  (`hero-facility.svg`, `portal-care.svg`, `emergency-response.svg`) wired via
+  next/image into the home hero, portal CTA banner, emergency banner, and the
+  new split-screen `(auth)` layout. Department cards use a real icon set keyed
+  off `constants.icon` (`components/hospital/department-icon.jsx`). Doctor
+  cards/profiles show duotone initials avatars (`doctor-avatar.jsx`) until
+  real portraits ship. Added dark-panel utilities (`bg-fg`, `text-white`,
+  `text-onDark*`, `border-onDark`); fixed pre-existing broken `text-white`
+  CTAs that had no backing class.
 - **Tier 1 standard-website layer complete**: brand assets (`app/icon.png`,
   `app/apple-icon.png`, `app/favicon.ico`, `app/opengraph-image.png`,
   `public/logo.svg`), `robots.js`, `sitemap.js`, `not-found.jsx`, `error.jsx`,
@@ -102,6 +113,38 @@ What exists now (self-contained, dependencies available):
 ## 6. Work log
 
 Newest entry at the top. One entry per commit, a few lines.
+
+- **2026-08-25 (b)**: light/dark mode + motion pass. Token-level dark theme
+  under `html[data-theme="dark"]` (navy family, never pure black; accents lift
+  to #6ea3ee, solid fills flip to dark ink foreground, semantic washes become
+  translucent tints, body line-height bumped). Hand-rolled ThemeProvider +
+  pre-paint boot script in layout head (no flash), `suppressHydrationWarning`
+  on html; toggle lives in navbar (public), sidebar footer + bottom-nav
+  (portal). Shadows tokenized via --shadow-color. Fixed dead classes:
+  animate-pulse/animate-ping now defined, bg-surface/95 replaced with real
+  bg-surface-95 utility (sticky header was rendering transparent).
+  Motion per skills/frontend-design.md: hero entrance stagger (.anim-in),
+  one-shot IntersectionObserver scroll reveals (components/ui/reveal.jsx) on
+  home sections with staggered cards, .lift card hover, .press button
+  feedback, modal backdrop/panel entrance animations; all disabled under
+  prefers-reduced-motion. Verified: lint clean, full build green (54 routes).
+- **2026-08-25**: visual overhaul per user feedback ("too plain, wrong
+  color"). Replaced teal with heritage clinical blue tokens (#1e56a0 accent,
+  #0e2038 ink); recolored themeColor, logo.svg, and regenerated icon/apple/
+  OG/favicon PNGs. Built an imagery system: three palette-bound SVG
+  illustrations (facility campus, portal records+shield, ambulance) integrated
+  into home hero, portal CTA, emergency banner, and a redesigned split-screen
+  auth layout with trust points. Department cards gained per-specialty icons
+  (heart/brain/baby/bone/ribbon/female/ambulance/scan) honoring the unused
+  `icon` field; doctor cards/profiles gained initials avatars. Added missing
+  dark-panel utility classes and fixed `text-white` CTAs that referenced a
+  nonexistent class. Verified: lint clean, full production build green.
+- **2026-08-23**: Tier 1 standard-website layer: brand assets (favicon.ico,
+  icon.png, apple-icon.png, opengraph-image.png, logo.svg), robots.js,
+  sitemap.js, not-found/error/loading states, full root metadata
+  (metadataBase, title template, OG/Twitter), next/font (Source Sans 3 +
+  Lora) wired to tokens, metadata layouts for the four client pages, RSC
+  onClick fix on /resources via client island.
 
 - **2026-08-22**: implemented Step Two: Complete Providence General Hospital
   web application and patient portal. Built responsive public portal pages (Home,

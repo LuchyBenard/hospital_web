@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Source_Sans_3, Lora } from "next/font/google";
 import { AuthProvider } from "@/contexts/auth-context";
+import { ThemeProvider } from "@/contexts/theme-context";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { hospitalInfo, siteConfig } from "@/constants";
@@ -16,6 +17,10 @@ const lora = Lora({
   variable: "--font-lora",
   display: "swap",
 });
+
+// Runs before first paint: restores the saved theme or follows the system,
+// so there is no light-flash on dark loads.
+const themeBoot = `(function(){try{var t=localStorage.getItem("ibuild.theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;}catch(e){}})();`;
 
 export const metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -58,18 +63,30 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1e56a0",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#1e56a0" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a1422" },
+  ],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${lora.variable}`}>
+    <html
+      lang="en"
+      className={`${sourceSans.variable} ${lora.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
+      </head>
       <body>
-        <AuthProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

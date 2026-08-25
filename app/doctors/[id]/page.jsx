@@ -2,6 +2,7 @@ import { getDoctorById, listDoctors } from "@/lib/models/doctors";
 import { getDepartmentById } from "@/lib/models/departments";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { DoctorAvatar } from "@/components/hospital/doctor-avatar";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

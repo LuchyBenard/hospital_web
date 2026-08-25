@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { appNav, hospitalInfo } from "@/constants";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/auth-context";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 // Logged-in patient portal desktop sidebar
 export function Sidebar() {
@@ -75,9 +76,12 @@ export function Sidebar() {
 
       {/* Footer Support & Logout */}
       <div className="border-t border-line p-4 space-y-3">
-        <div className="rounded bg-bg p-2.5 text-xs">
-          <div className="font-semibold text-fg">Care Desk 24/7</div>
-          <div className="text-mute">{hospitalInfo.phone.appointments}</div>
+        <div className="flex items-center justify-between gap-2 rounded bg-bg p-2.5 text-xs">
+          <div>
+            <div className="font-semibold text-fg">Care Desk 24/7</div>
+            <div className="text-mute">{hospitalInfo.phone.appointments}</div>
+          </div>
+          <ThemeToggle />
         </div>
         <button
           onClick={handleLogout}

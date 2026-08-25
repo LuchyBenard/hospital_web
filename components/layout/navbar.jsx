@@ -6,6 +6,7 @@ import { publicNav, hospitalInfo } from "@/constants";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/auth-context";
 import { MobileMenu } from "@/components/layout/mobile-menu";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { EmergencyBanner } from "@/components/hospital/emergency-banner";
 import { Button } from "@/components/ui/button";
 
@@ -22,7 +23,7 @@ export function Navbar() {
   return (
     <>
       <EmergencyBanner />
-      <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur shadow-xs">
+      <header className="sticky top-0 z-40 border-b border-line bg-surface-95 backdrop-blur shadow-xs">
         <div className="container-content flex h-16 items-center justify-between">
           {/* Logo & Hospital Brand */}
           <Link href="/" className="flex items-center gap-2.5">
@@ -69,29 +70,31 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Standout Primary CTA & Patient Portal */}
-          <div className="hidden items-center gap-3 sm:flex">
-            {user ? (
-              <Link href="/dashboard">
-                <Button size="sm" variant="secondary">
-                  Patient Portal ({user.name.split(" ")[0]})
+          <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
+            <div className="hidden items-center gap-3 sm:flex">
+              {user ? (
+                <Link href="/dashboard">
+                  <Button size="sm" variant="secondary">
+                    Patient Portal ({user.name.split(" ")[0]})
+                  </Button>
+                </Link>
+              ) : (
+                <Link href="/login">
+                  <Button size="sm" variant="ghost" className="text-xs font-medium text-mute hover:text-fg">
+                    Patient Sign In
+                  </Button>
+                </Link>
+              )}
+              <Link href="/appointments">
+                <Button
+                  size="sm"
+                  className="bg-accent text-accent-fg font-bold shadow-sm hover:opacity-90 px-4"
+                >
+                  Book Appointment
                 </Button>
               </Link>
-            ) : (
-              <Link href="/login">
-                <Button size="sm" variant="ghost" className="text-xs font-medium text-mute hover:text-fg">
-                  Patient Sign In
-                </Button>
-              </Link>
-            )}
-            <Link href="/appointments">
-              <Button
-                size="sm"
-                className="bg-accent text-accent-fg font-bold shadow-sm hover:opacity-90 px-4"
-              >
-                Book Appointment
-              </Button>
-            </Link>
+            </div>
           </div>
 
           <MobileMenu items={publicNav} active={isActive} />

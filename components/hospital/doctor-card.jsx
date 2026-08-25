@@ -7,7 +7,7 @@ export function DoctorCard({ doctor }) {
   if (!doctor) return null;
 
   return (
-    <Card className="flex flex-col justify-between transition-shadow hover:shadow-md">
+    <Card className="flex flex-col justify-between h-full lift transition-shadow hover:shadow-md">
       <div>
         <div className="mb-3 flex items-start justify-between gap-2">
           <div className="flex items-center gap-3">

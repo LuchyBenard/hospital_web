@@ -4,15 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { appNav } from "@/constants";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 // Logged-in mobile bottom navigation bar
 export function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-line bg-surface/95 backdrop-blur md:hidden shadow-lg">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-line bg-surface-95 backdrop-blur md:hidden shadow-lg">
       <div className="flex">
-        {appNav.slice(0, 5).map((item) => {
+        {appNav.slice(0, 4).map((item) => {
           const active =
             item.href === "/dashboard"
               ? pathname === "/dashboard"
@@ -30,6 +31,9 @@ export function BottomNav() {
             </Link>
           );
         })}
+        <div className="flex flex-1 items-center justify-center py-2">
+          <ThemeToggle />
+        </div>
       </div>
     </nav>
   );

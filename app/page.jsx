@@ -5,6 +5,7 @@ import { DepartmentCard } from "@/components/hospital/department-card";
 import { DoctorCard } from "@/components/hospital/doctor-card";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 
 export default function HomePage() {
   return (
@@ -14,19 +15,19 @@ export default function HomePage() {
         <div className="container-content">
           <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] items-center">
             <div>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-line bg-bg px-3 py-1 text-xs font-semibold text-accent">
+              <div className="mb-4 inline-flex anim-in items-center gap-2 rounded-full border border-line bg-bg px-3 py-1 text-xs font-semibold text-accent">
                 <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                 MAGNET RECOGNIZED &bull; LEVEL I TRAUMA CENTER
               </div>
-              <h1 className="t-display mb-6 text-fg">
+              <h1 className="t-display mb-6 text-fg anim-in anim-d-1">
                 Advanced clinical medicine. Compassionate patient care.
               </h1>
-              <p className="t-lead mb-8 max-w-xl">
+              <p className="t-lead mb-8 max-w-xl anim-in anim-d-2">
                 Providence General Hospital brings together leading board-certified
                 specialists, precision robotic surgical technology, and 24/7 acute
                 trauma readiness.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 anim-in anim-d-3">
                 <Link href="/appointments">
                   <Button size="lg">Schedule Appointment</Button>
                 </Link>
@@ -48,7 +49,7 @@ export default function HomePage() {
             </div>
 
             {/* Campus Art + Quick Access Card */}
-            <div className="space-y-4">
+            <div className="space-y-4 anim-in anim-d-2">
               <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-sm">
                 <Image
                   src="/images/hero-facility.svg"
@@ -124,7 +125,8 @@ export default function HomePage() {
       {/* Stats Bar */}
       <section className="border-b border-line bg-surface py-8">
         <div className="container-content">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+          <Reveal>
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             <div>
               <div className="text-2xl font-bold text-accent font-mono sm:text-3xl">
                 40+ Years
@@ -158,12 +160,14 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Departments Section */}
       <section className="py-16 sm:py-20">
         <div className="container-content">
+          <Reveal>
           <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <span className="badge badge-accent mb-2">Clinical Specialties</span>
@@ -181,10 +185,13 @@ export default function HomePage() {
               </Button>
             </Link>
           </div>
+          </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {departments.slice(0, 4).map((dept) => (
-              <DepartmentCard key={dept.id} department={dept} />
+            {departments.slice(0, 4).map((dept, i) => (
+              <Reveal key={dept.id} delay={i * 70}>
+                <DepartmentCard department={dept} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -193,6 +200,7 @@ export default function HomePage() {
       {/* Doctors Spotlight Section */}
       <section className="border-t border-line bg-surface py-16 sm:py-20">
         <div className="container-content">
+          <Reveal>
           <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <span className="badge badge-accent mb-2">Medical Faculty</span>
@@ -210,10 +218,13 @@ export default function HomePage() {
               </Button>
             </Link>
           </div>
+          </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {doctors.slice(0, 4).map((doc) => (
-              <DoctorCard key={doc.id} doctor={doc} />
+            {doctors.slice(0, 4).map((doc, i) => (
+              <Reveal key={doc.id} delay={i * 70}>
+                <DoctorCard doctor={doc} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -222,6 +233,7 @@ export default function HomePage() {
       {/* Hospital Services Section */}
       <section className="border-t border-line py-16 sm:py-20">
         <div className="container-content">
+          <Reveal>
           <div className="mb-10">
             <span className="badge badge-accent mb-2">Hospital Services</span>
             <h2 className="text-2xl font-bold text-fg sm:text-3xl">
@@ -232,38 +244,38 @@ export default function HomePage() {
               and 24/7 on-site pharmacy support.
             </p>
           </div>
+          </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <Card
-                key={service.id}
-                className="flex flex-col justify-between transition-shadow hover:shadow-md"
-              >
-                <div>
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="badge badge-info text-xs">
-                      {service.category}
-                    </span>
-                    <span className="text-xs font-semibold text-accent">
-                      {service.badge}
-                    </span>
+            {services.map((service, i) => (
+              <Reveal key={service.id} delay={(i % 3) * 80}>
+                <Card className="flex flex-col justify-between h-full lift">
+                  <div>
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="badge badge-info text-xs">
+                        {service.category}
+                      </span>
+                      <span className="text-xs font-semibold text-accent">
+                        {service.badge}
+                      </span>
+                    </div>
+                    <h3 className="mb-2 text-base font-bold text-fg">
+                      {service.name}
+                    </h3>
+                    <p className="text-xs leading-relaxed text-mute">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="mb-2 text-base font-bold text-fg">
-                    {service.name}
-                  </h3>
-                  <p className="text-xs leading-relaxed text-mute">
-                    {service.description}
-                  </p>
-                </div>
-                <div className="mt-4 border-t border-line pt-3">
-                  <Link
-                    href="/appointments"
-                    className="text-xs font-semibold text-accent hover:underline"
-                  >
-                    Inquire or Book &rarr;
-                  </Link>
-                </div>
-              </Card>
+                  <div className="mt-4 border-t border-line pt-3">
+                    <Link
+                      href="/appointments"
+                      className="text-xs font-semibold text-accent hover:underline"
+                    >
+                      Inquire or Book &rarr;
+                    </Link>
+                  </div>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -272,6 +284,7 @@ export default function HomePage() {
       {/* Patient Portal CTA Banner */}
       <section className="border-t border-line bg-surface py-16">
         <div className="container-content">
+          <Reveal>
           <div className="grid items-center gap-10 rounded-xl border border-line bg-bg p-8 sm:p-12 lg:grid-cols-[1.35fr_1fr]">
             <div>
               <span className="badge badge-accent mb-3">Secure Patient Portal</span>
@@ -305,6 +318,7 @@ export default function HomePage() {
               />
             </div>
           </div>
+          </Reveal>
         </div>
       </section>
     </main>
