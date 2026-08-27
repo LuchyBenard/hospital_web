@@ -79,6 +79,12 @@ export const publicNav = [
   { label: "Contact", href: "/contact" },
 ];
 
+export const legalNav = [
+  { label: "Privacy Policy", href: "/legal/privacy" },
+  { label: "Terms of Use", href: "/legal/terms" },
+  { label: "Accessibility", href: "/legal/accessibility" },
+];
+
 export const appNav = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "Appointments", href: "/dashboard/appointments" },

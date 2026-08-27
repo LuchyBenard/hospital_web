@@ -326,6 +326,23 @@ body {
 .theme-icon-moon { display: none; }
 html[data-theme="dark"] .theme-icon-sun { display: none; }
 html[data-theme="dark"] .theme-icon-moon { display: block; }
+
+/* Legal / policy page typography */
+.prose-legal h2 {
+  font-size: 1.125rem;
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+.prose-legal p {
+  color: var(--color-fg);
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+.prose-legal li {
+  color: var(--color-fg);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
 .animate-spin { animation: spin 0.8s linear infinite; }
 .backdrop-blur { backdrop-filter: blur(8px); }
 .backdrop-blur-sm { backdrop-filter: blur(4px); }

@@ -4,6 +4,7 @@ import { AuthProvider } from "@/contexts/auth-context";
 import { ThemeProvider } from "@/contexts/theme-context";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { HospitalSchema } from "@/components/seo/hospital-schema";
 import { hospitalInfo, siteConfig } from "@/constants";
 
 const sourceSans = Source_Sans_3({
