@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { hospitalInfo, emergencyHotlines, departments } from "@/constants";
+import { hospitalInfo, emergencyHotlines, departments, legalNav } from "@/constants";
 
 const year = new Date().getFullYear();
 
@@ -118,16 +118,12 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-mute sm:flex-row">
           <p>&copy; {year} {hospitalInfo.name}. All rights reserved.</p>
-          <div className="flex gap-4">
-            <Link href="/about" className="hover:underline">
-              About Providence
-            </Link>
-            <Link href="/contact" className="hover:underline">
-              Patient Care & Inquiries
-            </Link>
-            <Link href="/emergency" className="text-emergency hover:underline font-medium">
-              Emergency Services
-            </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            {legalNav.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:underline">
+                {item.label}
+              </Link>
+            ))}
             <Link href="/login" className="hover:underline">
               Patient Portal
             </Link>

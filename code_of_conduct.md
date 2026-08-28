@@ -114,6 +114,17 @@ What exists now (self-contained, dependencies available):
 
 Newest entry at the top. One entry per commit, a few lines.
 
+- **2026-08-25 (c)**: legal pages + structured data. Added four routes under
+  `app/legal/` (index, privacy, terms, accessibility) sharing a
+  `components/legal/legal-page.jsx` shell with section headers and cross-links;
+  content written in the design-skill human voice with HIPAA-informed privacy
+  sections. Added `legalNav` to constants, linked into the footer bottom bar,
+  and added the legal URLs to sitemap. Added `components/seo/hospital-schema.jsx`
+  emitting JSON-LD `Hospital` schema (address, geo, hours, department
+  specialties/members) injected into the root layout head. `legalNav` replaces
+  the coding-practice employee-legal links in the footer. Verified: lint clean,
+  build green (58 routes incl. 4 legal).
+
 - **2026-08-25 (b)**: light/dark mode + motion pass. Token-level dark theme
   under `html[data-theme="dark"]` (navy family, never pure black; accents lift
   to #6ea3ee, solid fills flip to dark ink foreground, semantic washes become

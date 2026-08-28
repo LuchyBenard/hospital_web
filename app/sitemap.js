@@ -16,6 +16,10 @@ export default function sitemap() {
     { path: "/resources", priority: 0.6, freq: "monthly" },
     { path: "/login", priority: 0.3, freq: "yearly" },
     { path: "/signup", priority: 0.4, freq: "yearly" },
+    { path: "/legal", priority: 0.2, freq: "yearly" },
+    { path: "/legal/privacy", priority: 0.2, freq: "yearly" },
+    { path: "/legal/terms", priority: 0.2, freq: "yearly" },
+    { path: "/legal/accessibility", priority: 0.2, freq: "yearly" },
   ];
 
   return routes.map((route) => ({

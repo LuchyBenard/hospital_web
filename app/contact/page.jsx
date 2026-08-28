@@ -8,15 +8,37 @@ import { Input, Field } from "@/components/ui/input";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [subject, setSubject] = useState("General Inquiry");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, subject, message }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error?.message || "We could not send your inquiry. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -133,6 +155,15 @@ export default function ContactPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {submitError ? (
+                  <div
+                    role="alert"
+                    className="rounded-lg border border-danger bg-emergency-light p-3 text-xs font-medium text-danger"
+                  >
+                    {submitError}
+                  </div>
+                ) : null}
+
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field label="Full Name" htmlFor="cName">
                     <Input
@@ -203,8 +234,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="pt-2">
-                  <Button type="submit" size="lg" className="w-full">
-                    Submit Inquiry
+                  <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+                    {submitting ? "Sending..." : "Submit Inquiry"}
                   </Button>
                 </div>
               </form>

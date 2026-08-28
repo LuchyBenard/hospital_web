@@ -79,6 +79,7 @@ export default function RootLayout({ children }) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
+        <HospitalSchema />
       </head>
       <body>
         <ThemeProvider>
