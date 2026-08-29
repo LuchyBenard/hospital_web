@@ -114,6 +114,16 @@ What exists now (self-contained, dependencies available):
 
 Newest entry at the top. One entry per commit, a few lines.
 
+- **2026-08-25 (d)**: real `/contact` submission + security headers. Contact
+  form now POSTs to `app/api/contact/route.js`: zod validation (422), simple
+  in-memory per-IP rate limit (429, 5/15min), honest error contract via
+  lib/api.js, and persistence through `lib/models/inquiries.js` (Firestore when
+  configured, else an labeled in-memory store). Client shows real server
+  errors and a sending state instead of a fake success. Added security headers
+  in next.config.js (CSP baseline incl. Firebase origins, X-Frame-Options,
+  nosniff, Referrer-Policy, Permissions-Policy, HSTS). Verified: lint clean,
+  build green (/api/contact present in route table).
+
 - **2026-08-25 (c)**: legal pages + structured data. Added four routes under
   `app/legal/` (index, privacy, terms, accessibility) sharing a
   `components/legal/legal-page.jsx` shell with section headers and cross-links;
