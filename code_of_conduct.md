@@ -114,6 +114,14 @@ What exists now (self-contained, dependencies available):
 
 Newest entry at the top. One entry per commit, a few lines.
 
+- **2026-08-30**: rewritten `README.md` to fully document the Providence General
+  Hospital web portal and patient portal, architecture, directory structure,
+  feature breakdown, setup commands, scripts, and demo credentials. Streamlined
+  public navigation in `constants.js` and `components/layout/navbar.jsx` to
+  the cleaner standard layout (`Home`, `About`, `Services`, `Departments`,
+  `Doctors`, `Resources`, `Contact` + standout `Book Appointment` CTA button)
+  and created `app/resources/page.jsx`. Verified: `npm run lint` is clean.
+
 - **2026-08-25 (d)**: real `/contact` submission + security headers. Contact
   form now POSTs to `app/api/contact/route.js`: zod validation (422), simple
   in-memory per-IP rate limit (429, 5/15min), honest error contract via

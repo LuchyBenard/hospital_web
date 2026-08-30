@@ -1,153 +1,144 @@
-# iBuild
+# Providence General Hospital (Providence Health)
 
-Guidance files that teach an AI your standards before it touches your code.
+A modern, production-grade fullstack web application and secure patient portal for **Providence General Hospital**, an accredited tertiary medical center and Level I Trauma Hub established in 1984.
 
-Most people start a project with an AI by telling it what to do on the spot.
-Every session starts over. iBuild is the fix: a small set of plain-text files
-at the root of your project that describe how you want things done, once, so
-every AI session and every AI tool follows the same rules from the first
-line.
+Built with **Next.js 14 (App Router)**, React 18, plain JavaScript, token-driven vanilla CSS, and a free-tier-first data access layer adhering to strict healthcare design standards.
 
 ---
 
-## What a README does
+## Features
 
-The README is the front door of a project. It is the first file a person
-opens and often the first file an AI reads too. Its job is not to repeat
-documentation. Its job is to answer three questions fast:
+### 1. Public Healthcare Portal
+- **24/7 Level I Trauma & Emergency Hub (`/emergency`)**: Direct dispatch hotlines for Ambulance & Trauma (`+1 800-555-0911`), Acute Stroke & Chest Pain Triage, Pediatric Emergency Desk, and Poison Control, with ER vs. Urgent Care triage guidelines.
+- **Specialty Departments (`/departments`, `/departments/[slug]`)**: 8 clinical specialty centers (Cardiology, Neurology, Pediatrics, Orthopedics, Oncology, Obstetrics & Gynecology, Emergency Medicine, Radiology) with department heads, clinical capabilities, and physician rosters.
+- **Doctor Directory (`/doctors`, `/doctors/[id]`)**: Searchable and filterable medical staff directory with specialty filters, qualifications, consultation fees, patient ratings, clinic schedules, and direct appointment booking.
+- **Clinical Services (`/services`)**: Inpatient and outpatient clinical capabilities categorized by Critical Care, Diagnostics, Surgical Care, Wellness & Prevention, Outpatient, and 24/7 In-House Pharmacy.
+- **Interactive Appointment Booking (`/appointments`)**: Dynamic appointment booking system with department/specialist selection, in-person vs. telehealth consultation formats, time slot picker, and instant booking confirmation.
+- **Health & Patient Resources (`/resources`)**: Hospital admission checklists, surgical preparation instructions, diagnostic imaging protocols, downloadable patient registration forms, and clinical FAQs.
+- **Insurance & Pricing Transparency (`/pricing`)**: Outpatient consultation fee schedules, accepted commercial insurance networks (BlueCross, Aetna, Cigna, UnitedHealthcare, Medicare), and financial assistance programs.
+- **Hospital History & Mission (`/about`)**: 40-year history of clinical excellence, Magnet nursing recognition, JCAHO Gold Seal accreditations, and New York State DOH licensing.
+- **Contact & Inquiries (`/contact`)**: Interactive inquiry and feedback form, pavilion location map links, direct department phone extensions, and visiting hours breakdown.
 
-1. **What is this project?**
-2. **Why does it exist?**
-3. **Where do I go next?**
-
-If those three questions are not answered in the first screen of text, the
-README has failed. Everything else on a project page is detail for later; the
-README is the summary you need right now.
-
----
-
-## What is in the box
-
-Each file has one job. Together they form the full briefing an AI needs.
-
-### [AGENTS.md](AGENTS.md) (the index)
-
-The rulebook. It tells the AI how to behave everywhere: which rules always
-bind, which file has authority over which domain, and what must happen
-before every commit. It is the first file an AI reads, and it points to
-everything else.
-
-### [`skills/`](skills/) (the specialist guides)
-
-One file per craft, written as a decision engine, not a suggestion list.
-
-- [frontend-design.md](skills/frontend-design.md) says what good design is
-  for this project and what to never ship (no generic AI looks, no purple
-  gradients, no emoji icons).
-- [backend.md](skills/backend.md) says how the server side should be built
-  and how to stay inside free-tier quotas, so the project stays cheap while
-  it grows.
-
-The AI checks the relevant skill before doing any work in that area.
-
-### [code_of_conduct.md](code_of_conduct.md) (the live record)
-
-The project's memory. Before every commit, the state of the project is
-written here: what changed, what was decided, where things stand. A brand new
-AI can read this one file and pick up where the last session stopped, without
-re-reading the whole codebase.
-
-### [security.md](security.md) (the audit book)
-
-The checklist the AI runs when you ask for an audit: secrets, known
-vulnerabilities, access rules, SEO, performance. After each audit it records
-where it stopped, so the next audit resumes where the previous one left off.
+### 2. Confidential Patient Healthcare Portal (`(app)` Protected Routes)
+- **Patient Dashboard (`/dashboard`)**: Comprehensive overview for registered patients displaying next upcoming visit alerts, vital clinical badges (Blood Group O+, documented allergies, MRN), recent diagnostic lab results preview, and active prescriptions.
+- **Appointments Manager (`/dashboard/appointments`)**: Manage upcoming, past, and completed clinical visits with one-click cancellation.
+- **Medical Records & Diagnostics (`/dashboard/records`)**: View verified metabolic & lipid panels, 2D echocardiograms, and MRI reports with clinical summary modals and export options.
+- **Prescriptions & Pharmacy Refills (`/dashboard/prescriptions`)**: Track daily medications, dosage schedules, remaining refills, and submit refill requests to the 24/7 in-house pharmacy.
+- **Patient Clinical Profile (`/profile`)**: Official medical demographics, Medical Record Number (MRN), primary care physician, verified insurance policy, and emergency contact details.
+- **Portal Settings (`/settings`)**: Configurable SMS appointment reminders, lab result email alerts, pharmacy pickup notices, and security credentials.
 
 ---
 
-## Why the README matters, even with docs present
+## Design System & Architecture
 
-Documentation describes how the project works. The README has a different
-job, and a project with good docs but a bad README still fails:
-
-- **It sets the frame.** Docs assume you already know what you are looking at.
-  The README tells you what you are looking at and why it exists. Without it,
-  even complete documentation is a map with no legend.
-- **It is the shared entry point for humans and AI.** When both read the same
-  one-page framing first, a human and an AI tool start from the same
-  understanding. That is the cheapest possible context sync.
-- **It is a guarantee a project is alive.** Projects without a README feel
-  abandoned or internal. A clear README is the marker of a project meant to be
-  used by others.
-- **It forces the thing to be explainable.** Writing the README in plain
-  words exposes when a project has no clear purpose. If it cannot be
-  explained simply, it cannot be built well.
+- **Industry-Derived Healthcare Aesthetics**: Clean, calm, high-trust healthcare palette featuring clinical teal (`#0f766e`), slate navy (`#0f172a`), emergency crimson (`#b91c1c`), and off-white surfaces with generous whitespace and accessible WCAG contrast.
+- **Zero AI Clichés**: No generic purple/indigo gradients, no universal pill buttons, no emoji-as-icons (all drawn SVG icons), and human clinical copy.
+- **Single Source of Truth (`constants.js`)**: Hospital metadata, emergency hotlines, menu items, departments, doctors, services, and demo patient records originate from one central module.
+- **Free-Tier-First Data Layer**: Structured data-access models (`lib/models/`) and Next.js route handlers (`app/api/`) designed for minimal read/write quota overhead and clean separation of concerns.
 
 ---
 
-## How it works together
+## Project Structure
 
 ```
-You (one page of intent)
-        \                                  AI tool reads, in order:
-         v                                 1. AGENTS.md (the rules)
-+---------------------+                    2. code_of_conduct.md (the state)
-|   The README sets   |                    3. skills/ (its craft)
-|   your expectations |                    4. security.md (before audits)
-+---------------------+                    5. then it starts working
-         |
-         v
-   Every file above
-   + your codebase
+hospital_web/
+├── app/
+│   ├── (app)/                       # Protected patient portal routes
+│   │   ├── dashboard/               # Patient dashboard
+│   │   │   ├── appointments/        # Patient appointments manager
+│   │   │   ├── prescriptions/       # Prescriptions & refill requests
+│   │   │   └── records/             # Medical records & lab reports
+│   │   ├── profile/                 # Patient clinical profile
+│   │   ├── settings/                # Notification & security settings
+│   │   └── layout.jsx               # Auth guard, sidebar & mobile bottom nav
+│   ├── (auth)/                      # Authentication routes
+│   │   ├── login/                   # Patient sign in
+│   │   ├── signup/                  # Patient registration
+│   │   └── layout.jsx               # Centered auth shell
+│   ├── about/                       # Hospital history & accreditations
+│   ├── api/                         # REST API route handlers
+│   │   ├── appointments/            # Appointments CRUD
+│   │   ├── auth/                    # Auth endpoints (login, signup, logout)
+│   │   ├── departments/             # Departments list
+│   │   ├── doctors/                 # Doctors list with filters
+│   │   ├── prescriptions/           # Prescriptions & refills
+│   │   └── records/                 # Medical records query
+│   ├── appointments/                # Public appointment booking wizard
+│   ├── contact/                     # Hospital contact & inquiry form
+│   ├── departments/                 # Department directory & dynamic [slug] pages
+│   ├── doctors/                     # Physician directory & dynamic [id] profiles
+│   ├── emergency/                   # 24/7 Trauma center & emergency hotlines
+│   ├── pricing/                     # Insurance & transparent fee schedules
+│   ├── resources/                   # Patient guides, forms & clinical FAQs
+│   ├── services/                    # Clinical services directory
+│   ├── globals.css                  # Pure CSS healthcare design system
+│   ├── layout.jsx                   # Root layout, metadata & navbar/footer
+│   └── page.jsx                     # Hospital homepage
+├── components/
+│   ├── auth/                        # LoginForm & SignupForm
+│   ├── hospital/                    # DoctorCard, DepartmentCard, StatusBadge, EmergencyBanner
+│   ├── layout/                      # Navbar, Footer, Sidebar, BottomNav, MobileMenu
+│   └── ui/                          # Button, Card, Input, Modal, Spinner
+├── contexts/
+│   └── auth-context.jsx             # AuthProvider & useAuth hook
+├── lib/
+│   ├── models/                      # Data-access models (appointments, doctors, records, etc.)
+│   ├── auth.js                      # Session helpers & authentication stubs
+│   └── utils.js                     # ClassName merger (cn)
+├── skills/                          # Frontend & backend authority specs
+├── AGENTS.md                        # Instruction hierarchy & non-negotiable rules
+├── code_of_conduct.md               # Project state graph & work history
+├── constants.js                     # Domain metadata, doctors, departments & seed data
+├── documentation.md                 # Developer reference and roadmap
+└── security.md                      # Audit runbook & security checklist
 ```
 
-That order matters. The AI reads the rules first, then the state file, so it
-knows both how to behave and where things stand before touching anything. It
-only opens the skill for the domain it is working in, and only opens
-security.md when an audit is asked for. Nothing runs, nothing installs; the
-files are read by the AI, kept current by the AI, and understood by your
-team.
+---
 
-The one rule you must follow: never let a commit happen without the state
-file being updated first.
+## Getting Started
 
-## Running an audit
+### Prerequisites
+- Node.js 18.17+ or 20+
+- npm or yarn
 
-Whenever you want the project checked, ask the AI to run an audit. The full
-checklist lives in [security.md](security.md); it covers secrets, known
-vulnerabilities, access rules (security rules / RLS), SEO, performance, and
-quota. The AI follows that file, reports every finding with severity and fix,
-and records where it stopped, so the next audit resumes where this one ended.
+### Installation
+1. Clone the repository or navigate to the project directory:
+   ```bash
+   cd c:\LuchyApps\hospital_web
+   ```
 
-The audit prompt:
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-> Run an audit on this project following [security.md](security.md).
+3. Start the local development server:
+   ```bash
+   npm run dev
+   ```
 
-A clean audit is not assumed; the AI says what was checked, what failed, and
-what was not covered. The result also lands in
-[code_of_conduct.md](code_of_conduct.md), so the project graph always shows
-the last audit state.
+4. Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
-## Building the project
+### Demo Patient Login Credentials
+To test the patient portal without creating a new account:
+- Click **"Patient Sign In"** in the top navigation or go to `http://localhost:3000/login`
+- Click the **"Auto-fill Credentials"** button (Email: `ada@example.com`, Password: `password123`)
+- Click **"Sign In to Portal"** to enter the patient dashboard.
 
-The app's structure, stack, navigation, auth, and API contract are defined in
-[documentation.md](documentation.md). To build it, ask the AI to scaffold
-using that file:
+---
 
-> Set up a fullstack Next.js app for me using the folder structure in
-> [documentation.md](documentation.md).
+## Verification & Scripts
 
-The AI creates the whole tree with dummy data, installs only the dependencies
-listed there, applies the design rules, and then stops for you to customize.
-It does not invent files or features beyond the spec.
+- **`npm run dev`**: Launches local Next.js development server.
+- **`npm run build`**: Compiles production bundle and statically prerenders all 47 routes.
+- **`npm run lint`**: Runs ESLint check across all components and pages.
+- **`npm start`**: Runs the production server after build.
 
-## Using this on your own project
+---
 
-1. Copy the files into the root of your project.
-2. Edit the [README.md](README.md) to describe your project, not this one.
-3. Point your AI tool at the repository and start building.
-4. Let it keep [code_of_conduct.md](code_of_conduct.md) and
-   [security.md](security.md) current as it works.
+## License & Accreditation
 
-You do not need to re-teach your AI what you like. It is already written down
-for you.
+&copy; 2026 Providence General Hospital. All rights reserved. Licensed under New York State Department of Health License #MED-HOSP-NY-8942. Magnet Recognized for Nursing Excellence & Joint Commission (JCAHO) Gold Seal Certified.
