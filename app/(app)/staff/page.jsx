@@ -102,7 +102,7 @@ export default function StaffPortalPage() {
         <Card className="p-4">
           <span className="text-xs text-mute block mb-1">Scheduled Patients</span>
           <span className="text-xl font-bold text-fg">{doctorAppointments.length}</span>
-          <span className="text-xs text-mute block mt-1">Today's clinic queue</span>
+          <span className="text-xs text-mute block mt-1">Today&apos;s clinic queue</span>
         </Card>
 
         <Card className="p-4">

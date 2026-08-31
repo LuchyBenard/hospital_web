@@ -88,8 +88,10 @@ export const legalNav = [
 export const appNav = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "Appointments", href: "/dashboard/appointments" },
+  { label: "Telehealth Room", href: "/dashboard/telehealth" },
   { label: "Medical Records", href: "/dashboard/records" },
   { label: "Prescriptions", href: "/dashboard/prescriptions" },
+  { label: "Staff Workstation", href: "/staff" },
   { label: "Profile", href: "/profile" },
   { label: "Settings", href: "/settings" },
 ];

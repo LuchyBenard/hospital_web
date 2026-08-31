@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/auth-context";
 import { listRecords } from "@/lib/models/records";
+import { hospitalInfo } from "@/constants";
 import { StatusBadge } from "@/components/hospital/status-badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,13 @@ export default function PatientMedicalRecordsPage() {
     category,
   });
 
+  const handlePrint = (rec) => {
+    setSelectedRecord(rec);
+    setTimeout(() => {
+      window.print();
+    }, 200);
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -27,7 +35,7 @@ export default function PatientMedicalRecordsPage() {
         </h1>
         <p className="text-xs sm:text-sm text-mute">
           Access verified laboratory panels, echocardiograms, MRI scans, and pathology
-          reports.
+          reports from Providence General.
         </p>
       </div>
 
@@ -89,13 +97,10 @@ export default function PatientMedicalRecordsPage() {
                 <Button
                   size="sm"
                   variant="ghost"
-                  onClick={() =>
-                    alert(
-                      `Downloading verified clinical PDF for record ${rec.id} (${rec.title}).`
-                    )
-                  }
+                  onClick={() => handlePrint(rec)}
+                  className="text-xs"
                 >
-                  Download PDF
+                  Print Report
                 </Button>
               </div>
             </div>
@@ -103,22 +108,23 @@ export default function PatientMedicalRecordsPage() {
         ))}
       </div>
 
-      {/* Detailed Report Modal */}
+      {/* Detailed Report Modal & Print Layout */}
       {selectedRecord && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-xl border border-line bg-surface p-6 sm:p-8 shadow-lg">
-            <div className="mb-4 flex items-center justify-between border-b border-line pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm print:relative print:p-0 print:bg-white print:backdrop-none">
+          <div className="w-full max-w-lg rounded-xl border border-line bg-surface p-6 sm:p-8 shadow-lg print:border-none print:shadow-none print:max-w-full">
+            {/* Official Hospital Letterhead for Print */}
+            <div className="mb-4 border-b border-line pb-4 flex items-center justify-between">
               <div>
-                <span className="badge badge-accent mb-1">
-                  {selectedRecord.category}
-                </span>
-                <h3 className="text-lg font-bold text-fg">
-                  {selectedRecord.title}
+                <div className="text-xs font-bold uppercase tracking-wider text-accent">
+                  {hospitalInfo.name} &bull; Clinical Pathology & Diagnostics
+                </div>
+                <h3 className="text-lg font-bold text-fg mt-1">
+                  Official Diagnostic Examination Report
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedRecord(null)}
-                className="text-mute hover:text-fg text-lg font-bold"
+                className="text-mute hover:text-fg text-lg font-bold print:hidden"
               >
                 &times;
               </button>
@@ -126,15 +132,19 @@ export default function PatientMedicalRecordsPage() {
 
             <div className="space-y-3 text-xs mb-6">
               <div className="flex justify-between border-b border-line pb-1.5">
-                <span className="text-mute">Patient:</span>
+                <span className="text-mute">Patient Name & MRN:</span>
                 <span className="font-semibold text-fg">
-                  {user?.name || "Ada Quinn"} ({user?.mrn || "MRN-48920-A"})
+                  {user?.name || "Ada Quinn"} &bull; ({user?.mrn || "MRN-48920-A"})
                 </span>
+              </div>
+              <div className="flex justify-between border-b border-line pb-1.5">
+                <span className="text-mute">Examination Title:</span>
+                <span className="font-semibold text-fg">{selectedRecord.title}</span>
               </div>
               <div className="flex justify-between border-b border-line pb-1.5">
                 <span className="text-mute">Ordering Specialist:</span>
                 <span className="font-semibold text-accent">
-                  {selectedRecord.doctorName}
+                  {selectedRecord.doctorName} ({selectedRecord.department})
                 </span>
               </div>
               <div className="flex justify-between border-b border-line pb-1.5">
@@ -142,21 +152,26 @@ export default function PatientMedicalRecordsPage() {
                 <span className="font-semibold text-fg">{selectedRecord.date}</span>
               </div>
               <div className="flex justify-between border-b border-line pb-1.5">
-                <span className="text-mute">Status:</span>
+                <span className="text-mute">Clinical Status:</span>
                 <StatusBadge status={selectedRecord.status} />
               </div>
 
               <div className="pt-2">
                 <span className="font-semibold text-fg block mb-1">
-                  Comprehensive Diagnostic Finding:
+                  Physician Interpretation & Clinical Impression:
                 </span>
-                <div className="rounded bg-bg p-3 text-fg leading-relaxed">
+                <div className="rounded bg-bg p-3.5 text-fg leading-relaxed border border-line">
                   {selectedRecord.summary}
                 </div>
               </div>
+
+              <div className="pt-3 border-t border-line text-[11px] text-mute flex justify-between">
+                <span>Electronic Signature: Verified by Dr. {selectedRecord.doctorName.split(" ")[1]}</span>
+                <span>Hospital ID: #NY-MED-8942</span>
+              </div>
             </div>
 
-            <div className="flex justify-end gap-2 border-t border-line pt-4">
+            <div className="flex justify-end gap-2 border-t border-line pt-4 print:hidden">
               <Button
                 variant="secondary"
                 size="sm"
@@ -166,12 +181,9 @@ export default function PatientMedicalRecordsPage() {
               </Button>
               <Button
                 size="sm"
-                onClick={() => {
-                  alert(`Official PDF exported for ${selectedRecord.title}.`);
-                  setSelectedRecord(null);
-                }}
+                onClick={() => window.print()}
               >
-                Print / Export
+                Print / Export PDF
               </Button>
             </div>
           </div>
