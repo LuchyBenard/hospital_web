@@ -114,6 +114,15 @@ What exists now (self-contained, dependencies available):
 
 Newest entry at the top. One entry per commit, a few lines.
 
+- **2026-09-01**: 5 custom hospital features. Built interactive Campus Map &
+  Indoor Wayfinder (`/campus-map`); created Secure Patient-Doctor Clinical
+  Messaging Inbox (`/dashboard/messages`) with attachments & HIPAA sessions;
+  built Emergency Triage & Symptom Decision Engine (`/symptom-checker`); built
+  Public Procedure Cost & Insurance Estimator (`/pricing/estimator`) and Patient
+  Invoices & Billing Simulator (`/dashboard/billing`); and created Instant Global
+  Search Modal with keyboard shortcuts (`Cmd+K`). Verified: `npm run lint` clean,
+  `npm run build` compiled 65 routes green.
+
 - **2026-08-31**: patient workflow enhancements & staff portal. Cleaned up
   legacy post files. Added interactive appointment rescheduling modal + calendar
   export (.ics); added 4-stage visual prescription refill progress stepper on
