@@ -114,6 +114,15 @@ What exists now (self-contained, dependencies available):
 
 Newest entry at the top. One entry per commit, a few lines.
 
+- **2026-08-31**: patient workflow enhancements & staff portal. Cleaned up
+  legacy post files. Added interactive appointment rescheduling modal + calendar
+  export (.ics); added 4-stage visual prescription refill progress stepper on
+  `/dashboard/prescriptions`; created interactive Virtual Telehealth Video
+  Consultation Room (`/dashboard/telehealth`); added printable official hospital
+  letterhead on `/dashboard/records`; and built Physician & Staff Workstation
+  (`/staff`) with daily patient queue charting and refill authorizations.
+  Verified: `npm run lint` clean, `npm run build` compiled 60 routes green.
+
 - **2026-08-30**: rewritten `README.md` to fully document the Providence General
   Hospital web portal and patient portal, architecture, directory structure,
   feature breakdown, setup commands, scripts, and demo credentials. Streamlined
