@@ -3,11 +3,13 @@
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import {
   getSession,
-  setSession,
-  clearSession,
-  mockAuthenticate,
+  signIn,
+  signUp,
+  signOutUser,
+  isRealAuth,
 } from "@/lib/auth";
-import { demoUser } from "@/constants";
+import { auth } from "@/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const AuthContext = createContext(null);
 
@@ -16,28 +18,43 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (isRealAuth() && auth) {
+      // Real mode: Firebase Auth drives session state.
+      const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
+        if (fbUser) {
+          setUser({
+            id: fbUser.uid,
+            uid: fbUser.uid,
+            name: fbUser.displayName || fbUser.email?.split("@")[0] || "Patient",
+            email: fbUser.email,
+          });
+        } else {
+          setUser(null);
+        }
+        setLoading(false);
+      });
+      return unsubscribe;
+    }
+
+    // Demo mode: read the localStorage session.
     setUser(getSession());
     setLoading(false);
   }, []);
 
   const login = useCallback(async (email, password) => {
-    const authenticated = mockAuthenticate(email, password);
-    if (!authenticated) throw new Error("Invalid credentials");
-    setSession(authenticated);
-    setUser(authenticated);
-    return authenticated;
+    const session = await signIn(email, password);
+    setUser(session);
+    return session;
   }, []);
 
   const signup = useCallback(async (name, email, password) => {
-    if (!name || !email || !password) throw new Error("All fields required");
-    const created = { ...demoUser, name, email };
-    setSession(created);
-    setUser(created);
-    return created;
+    const session = await signUp(name, email, password);
+    setUser(session);
+    return session;
   }, []);
 
-  const logout = useCallback(() => {
-    clearSession();
+  const logout = useCallback(async () => {
+    await signOutUser();
     setUser(null);
   }, []);
 
