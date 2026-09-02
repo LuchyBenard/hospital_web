@@ -249,7 +249,7 @@ export default function CampusMapPage() {
       {/* Parking & Transit Information */}
       <div className="grid gap-6 sm:grid-cols-3 mt-12">
         <Card className="p-6">
-          <h4 className="text-sm font-bold text-fg mb-2">🚗 Visitor Parking (Garage P2)</h4>
+          <h4 className="text-sm font-bold text-fg mb-2">Visitor Parking (Garage P2)</h4>
           <p className="text-xs text-mute leading-relaxed">
             Direct covered connection to Pavilions A, B, and C. Free parking for the first
             2 hours; valet available at Pavilion A entrance ($6/day).
@@ -257,7 +257,7 @@ export default function CampusMapPage() {
         </Card>
 
         <Card className="p-6">
-          <h4 className="text-sm font-bold text-fg mb-2">🚑 Emergency Parking (Garage P1)</h4>
+          <h4 className="text-sm font-bold text-fg mb-2">Emergency Parking (Garage P1)</h4>
           <p className="text-xs text-mute leading-relaxed">
             Reserved exclusively for Emergency & Trauma patients with direct ground-level
             access into the ER Fast-Track triage bay.
@@ -265,7 +265,7 @@ export default function CampusMapPage() {
         </Card>
 
         <Card className="p-6">
-          <h4 className="text-sm font-bold text-fg mb-2">♿ Accessibility & Wheelchairs</h4>
+          <h4 className="text-sm font-bold text-fg mb-2">Accessibility & Wheelchair Escorts</h4>
           <p className="text-xs text-mute leading-relaxed">
             All entrances feature automatic doors and wheelchair charging stations. Volunteer
             escorts are stationed at every pavilion desk 24/7.

@@ -7,11 +7,11 @@ import { hospitalInfo } from "@/constants";
 import Link from "next/link";
 
 const symptomCategories = [
-  { id: "chest", label: "Chest Pain / Heart Palpitations", icon: "❤️" },
-  { id: "neuro", label: "Headache, Dizziness, or Vision Changes", icon: "🧠" },
-  { id: "resp", label: "Shortness of Breath or Cough", icon: "🫁" },
-  { id: "ortho", label: "Joint Pain, Fracture, or Sports Injury", icon: "🦴" },
-  { id: "fever", label: "High Fever, Infection, or Rash", icon: "🌡️" },
+  { id: "chest", label: "Chest Pain / Heart Palpitations", desc: "Cardiovascular and thoracic symptoms" },
+  { id: "neuro", label: "Headache, Dizziness, or Vision Changes", desc: "Neurological and cognitive signs" },
+  { id: "resp", label: "Shortness of Breath or Cough", desc: "Pulmonary and respiratory symptoms" },
+  { id: "ortho", label: "Joint Pain, Fracture, or Sports Injury", desc: "Musculoskeletal and trauma concerns" },
+  { id: "fever", label: "High Fever, Infection, or Rash", desc: "Systemic and infectious symptoms" },
 ];
 
 export default function SymptomCheckerPage() {
@@ -79,7 +79,7 @@ export default function SymptomCheckerPage() {
               What primary symptom are you experiencing?
             </h2>
             <div className="grid gap-3 sm:grid-cols-1">
-              {symptomCategories.map((cat) => (
+              {symptomCategories.map((cat, idx) => (
                 <button
                   key={cat.id}
                   type="button"
@@ -87,10 +87,13 @@ export default function SymptomCheckerPage() {
                     setSelectedCat(cat.id);
                     setStep(2);
                   }}
-                  className="flex items-center gap-3 rounded-lg border border-line bg-surface p-4 text-left transition-all hover:border-accent hover:bg-accent-light/30"
+                  className="flex items-center justify-between rounded-lg border border-line bg-surface p-4 text-left transition-all hover:border-accent hover:bg-accent-light/30"
                 >
-                  <span className="text-2xl">{cat.icon}</span>
-                  <span className="text-sm font-semibold text-fg">{cat.label}</span>
+                  <div>
+                    <span className="text-sm font-bold text-fg block">{cat.label}</span>
+                    <span className="text-xs text-mute">{cat.desc}</span>
+                  </div>
+                  <span className="text-xs font-semibold text-accent">&rarr;</span>
                 </button>
               ))}
             </div>
@@ -145,7 +148,7 @@ export default function SymptomCheckerPage() {
               <div className="rounded-xl border-2 border-emergency bg-emergency-light/30 p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="badge badge-danger text-xs font-bold">
-                    🚨 Level I Trauma Emergency
+                    Level I Trauma Emergency
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-emergency">
@@ -175,7 +178,7 @@ export default function SymptomCheckerPage() {
               <div className="rounded-xl border border-warning bg-warning-light/40 p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="badge badge-warning text-xs font-bold">
-                    ⚠️ Urgent Care Walk-In
+                    Urgent Care Walk-In
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-fg">
@@ -199,7 +202,7 @@ export default function SymptomCheckerPage() {
               <div className="rounded-xl border border-accent bg-accent-light/40 p-6 space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="badge badge-accent text-xs font-bold">
-                    🩺 Routine / Telehealth Consultation
+                    Routine / Telehealth Consultation
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-fg">
