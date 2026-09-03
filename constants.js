@@ -534,7 +534,6 @@ export const demoRecords = [
     category: "Lab Results",
     summary: "Total cholesterol: 182 mg/dL, HDL: 58 mg/dL, LDL: 104 mg/dL. Fasting glucose: 91 mg/dL. All within normal limits.",
     status: "Normal",
-    downloadUrl: "#",
   },
   {
     id: "rec-802",
@@ -546,7 +545,6 @@ export const demoRecords = [
     category: "Imaging Report",
     summary: "Left ventricular ejection fraction (LVEF) preserved at 62%. No significant valvular regurgitation or stenosis.",
     status: "Normal",
-    downloadUrl: "#",
   },
   {
     id: "rec-803",
@@ -558,7 +556,6 @@ export const demoRecords = [
     category: "Imaging Report",
     summary: "Mild grade I medial meniscus sprain without full tear. Patellofemoral cartilage intact.",
     status: "Reviewed",
-    downloadUrl: "#",
   },
 ];
 
