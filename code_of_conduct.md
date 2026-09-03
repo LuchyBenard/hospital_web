@@ -114,6 +114,23 @@ What exists now (self-contained, dependencies available):
 
 Newest entry at the top. One entry per commit, a few lines.
 
+- **2026-09-03**: wired real Firebase Auth (portal security) while keeping the
+  dummy-data demo intact. `lib/auth.js` now uses the Firebase Auth client SDK
+  (signInWithEmailAndPassword / createUserWithEmailAndPassword / signOut) behind
+  the `firebaseEnabled` flag, with a graceful demo fallback (any creds log in as
+  demo Ada Quinn) when Firebase env is blank. `contexts/auth-context.jsx` now
+  subscribes to `onAuthStateChanged` in real mode (localStorage session in demo
+  mode). Added `firestore.rules`: default deny with owner-scoped `users/{uid}/*`
+  reads/writes, public read-only for departments/doctors/services, anonymous
+  inquiry create, staff write dropped until an admin role exists. Rewrote the
+  `.env.local` header as a step-by-step wiring guide (still blank = demo mode).
+  NOTE: real Firestore per-user data loading in portal pages is NOT yet built;
+  pages still read in-memory demo stores. In real mode a fresh account currently
+  sees an empty portal (demo data is keyed to patient-001, not the Firebase uid),
+  so nothing leaks across users; full async Firestore reads/writes are deferred
+  until credentials are available to test. Verified: `npm run lint` clean, `npm
+  run build` green (65 routes).
+
 - **2026-09-01**: 5 custom hospital features. Built interactive Campus Map &
   Indoor Wayfinder (`/campus-map`); created Secure Patient-Doctor Clinical
   Messaging Inbox (`/dashboard/messages`) with attachments & HIPAA sessions;
@@ -241,5 +258,9 @@ Rules that were decided once and should not be re-litigated:
 - Frontend design is industry-derived; AI aesthetics are forbidden.
 - Apps are plain JavaScript (`.js`/`.jsx`); no TypeScript.
 - `code_of_conduct.md` is updated before every commit, not after.
+- Auth is the Firebase Auth client SDK behind the `firebaseEnabled` flag; API
+  auth routes are legacy/dummy and not used by the context. Portal data stays in
+  in-memory demo stores until Firebase credentials exist; real per-user Firestore
+  reads/writes are a deferred task, not a bug.
 - The audit prompt and expected output live in security.md; an audit updates
   its state so the next audit resumes where the last one stopped.
