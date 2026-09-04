@@ -50,6 +50,8 @@ Where things live and what each file is for:
 | [security.md](security.md)                            | Audit runbook + where the last audit stopped       |
 | [skills/frontend-design.md](skills/frontend-design.md) | Visual/UI authority                                |
 | [skills/backend.md](skills/backend.md)                | Server/data authority, free-tier-first             |
+| [firestore.rules](firestore.rules)                    | Firestore security rules (owner-scoped, default deny) |
+| [next.config.js](next.config.js)                      | App config + security headers / CSP                |
 
 ## 4. How this project runs
 
@@ -113,6 +115,15 @@ What exists now (self-contained, dependencies available):
 ## 6. Work log
 
 Newest entry at the top. One entry per commit, a few lines.
+
+- **2026-09-03 (cleanup)**: final code cleaning. Removed the dead `app/api/auth/*`
+  routes (login/signup/logout) that returned `dummy-token` and were never called
+  by the client (auth is client-side via Firebase SDK / mock), plus their empty
+  `app/api/auth/` dir. Removed unused `downloadUrl: "#"` fields from the three
+  `demoRecords` in `constants.js` (never referenced by any component). Left the
+  documented data/health REST routes in place (they back the documented dummy
+  API contract and demonstrate the client-direct architecture). Verified: `npm
+  run lint` clean, `npm run build` green (62 routes, down from 65).
 
 - **2026-09-03**: wired real Firebase Auth (portal security) while keeping the
   dummy-data demo intact. `lib/auth.js` now uses the Firebase Auth client SDK
