@@ -100,7 +100,31 @@ is for the user; the state section is the record for the next audit.
 
 Last audit date:
 
-Nothing audited yet. Next audit: on first request, run section 3 fully and
-record the outcome here. Keep the newest entry at the top.
+No formal audit run yet. Security posture snapshot recorded 2026-09-03 so the
+next audit resumes informed. Keep the newest entry at the top.
+
+- **2026-09-03 (posture snapshot, not a full audit)**: recorded what is already
+  in place, from code changes that landed without a formal audit pass:
+  - Secrets/config: `.gitignore` ignores `.env.local`, `*.pem`, and all
+    `env*.local`. Repo grep shows no keys, tokens, service-account keys, or
+    private keys; Firebase client config values are blank (demo mode).
+  - Vulnerabilities: dependencies pinned and current (Next 14.2.5, React
+    18.3.1, Firebase 10.12.5, zod 3.23.8). Contact route validates with zod
+    (422), imposes a per-IP in-memory rate limit (429), and returns the honest
+    error contract. No injection surfaces beyond query/firestore clients.
+  - Rules/RLS: `firestore.rules` present with default deny, owner-scoped
+    `users/{uid}/*` reads/writes, public read-only reference collections,
+    anonymous inquiry create. Not yet deployed to a live Firestore project.
+  - SEO/web hygiene: metadata/OG/canonical, `robot.txt`/`sitemap.xml`,
+    `not-found`/`error` pages present (built out since the last audit record).
+  - Quota: models designed for minimal reads; inquiry writes go through a
+    store layer, not N firestore calls.
+  - Frontend review: no AI-aesthetic leaks per design skill; no secrets in the
+    client bundle.
+  - Not covered: dependency vulnerability scan (no `npm audit` run), no rule
+    tests executed (no Firebase rules emulator run), no Lighthouse run, no
+    live production deployment review.
+  - Next audit focus: run a real `npm audit` + `firebase emulators:exec` rule
+    tests when a Firebase project is configured; then a Lighthouse pass.
 
 - **2026-08-17**: baseline created. No audit run. Awaiting first request.

@@ -116,6 +116,21 @@ What exists now (self-contained, dependencies available):
 
 Newest entry at the top. One entry per commit, a few lines.
 
+- **2026-09-03 (docs refresh)**: brought docs in line with the current app.
+  README: fixed stale palette (teal -> heritage clinical blue/ink), rebuilt the
+  project tree to match reality (dropped dead `api/auth`, added messages,
+  telehealth, billing, staff, legal, campus-map, symptom-checker,
+  pricing/estimator, error boundaries, robots/sitemap, firestore.rules,
+  next.config.js), updated portal/public feature lists, corrected the route
+  count (47 -> 62) and documented demo-mode vs real Firebase auth. code_of_conduct
+  file map: added firestore.rules + next.config.js rows. security.md audit state:
+  recorded a posture snapshot (not claimed as a full audit) of what is already in
+  place (gitignore, pinned deps, zod/rate-limited contact route, firestore.rules,
+  robots/sitemap, security headers) plus what was not covered (npm audit, rule
+  emulator tests, Lighthouse). SEO: sitemap now includes /pricing/estimator,
+  /campus-map, /symptom-checker; robots disallows /staff. Verified: lint clean,
+  build green (62 routes).
+
 - **2026-09-03 (cleanup)**: final code cleaning. Removed the dead `app/api/auth/*`
   routes (login/signup/logout) that returned `dummy-token` and were never called
   by the client (auth is client-side via Firebase SDK / mock), plus their empty
