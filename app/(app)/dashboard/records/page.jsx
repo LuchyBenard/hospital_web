@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useAuth } from "@/contexts/auth-context";
-import { listRecords } from "@/lib/models/records";
+import { listRecords, listVitalTrends } from "@/lib/models/records";
 import { hospitalInfo } from "@/constants";
 import { StatusBadge } from "@/components/hospital/status-badge";
+import { TrendChart } from "@/components/hospital/trend-chart";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -12,11 +13,14 @@ export default function PatientMedicalRecordsPage() {
   const { user } = useAuth();
   const [category, setCategory] = useState("All");
   const [selectedRecord, setSelectedRecord] = useState(null);
+  const [showTrends, setShowTrends] = useState(true);
 
   const records = listRecords({
     patientId: user?.id || "patient-001",
     category,
   });
+
+  const vitalTrends = listVitalTrends({ patientId: user?.id || "patient-001" });
 
   const handlePrint = (rec) => {
     setSelectedRecord(rec);
@@ -38,6 +42,70 @@ export default function PatientMedicalRecordsPage() {
           reports from Providence General.
         </p>
       </div>
+
+      {/* Longitudinal Vitals & Lab Trend Timeline */}
+      <Card className="p-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="badge badge-info mb-1">
+              Longitudinal Monitoring
+            </span>
+            <h2 className="text-lg font-bold text-fg">
+              Vitals & Lab Trend Timeline
+            </h2>
+            <p className="text-xs text-mute mt-0.5">
+              Six-month trend of key biomarkers with documented reference ranges.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowTrends((v) => !v)}
+            className="text-xs font-semibold text-accent hover:underline"
+          >
+            {showTrends ? "Hide Trends" : "Show Trends"}
+          </button>
+        </div>
+
+        {showTrends && (
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {vitalTrends.map((trend) => (
+              <div
+                key={trend.id}
+                className="rounded-lg border border-line bg-bg p-4"
+              >
+                <div className="mb-3 flex items-start justify-between gap-2">
+                  <div>
+                    <div className="text-sm font-bold text-fg">
+                      {trend.metric}
+                      <span className="ml-1.5 text-xs font-semibold text-mute">
+                        ({trend.unit})
+                      </span>
+                    </div>
+                    <div className="text-xs text-mute">
+                      Target range: {trend.goal}
+                    </div>
+                  </div>
+                  <span className="badge badge-accent text-xs">
+                    {trend.points.at(-1).value} {trend.unit}
+                  </span>
+                </div>
+
+                <TrendChart
+                  data={trend.points}
+                  unit={trend.unit}
+                  refMin={trend.refMin}
+                  refMax={trend.refMax}
+                  color={trend.color}
+                />
+
+                <p className="mt-3 border-t border-line pt-2 text-[11px] leading-relaxed text-mute">
+                  {trend.notes}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </Card>
 
       {/* Filter Tabs */}
       <div className="flex gap-2 border-b border-line pb-3">

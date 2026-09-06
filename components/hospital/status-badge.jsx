@@ -5,9 +5,14 @@ export function StatusBadge({ status, className }) {
   const s = status.toLowerCase();
 
   let variant = "badge";
-  if (s === "upcoming" || s === "active" || s === "normal") {
+  if (s === "upcoming" || s === "active" || s === "normal" || s === "approved") {
     variant = "badge badge-success";
-  } else if (s === "emergency" || s === "urgent" || s === "cancelled") {
+  } else if (
+    s === "emergency" ||
+    s === "urgent" ||
+    s === "cancelled" ||
+    s === "denied"
+  ) {
     variant = "badge badge-emergency";
   } else if (s === "completed" || s === "reviewed") {
     variant = "badge badge-info";

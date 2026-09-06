@@ -15,6 +15,8 @@ export default function sitemap() {
     { path: "/pricing", priority: 0.7, freq: "monthly" },
     { path: "/pricing/estimator", priority: 0.6, freq: "monthly" },
     { path: "/resources", priority: 0.6, freq: "monthly" },
+    { path: "/health-library", priority: 0.6, freq: "weekly" },
+    { path: "/visit", priority: 0.6, freq: "monthly" },
     { path: "/campus-map", priority: 0.5, freq: "monthly" },
     { path: "/symptom-checker", priority: 0.5, freq: "monthly" },
     { path: "/login", priority: 0.3, freq: "yearly" },

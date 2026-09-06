@@ -11,6 +11,8 @@ const staticSearchItems = [
   { title: "Procedure Cost & Insurance Estimator", category: "Pricing & Billing", href: "/pricing/estimator" },
   { title: "Book an Appointment", category: "Appointments", href: "/appointments" },
   { title: "Patient & Health Resources", category: "Patient Education", href: "/resources" },
+  { title: "Health Library & Patient Education", category: "Patient Education", href: "/health-library" },
+  { title: "Plan Your Visit & Directions", category: "Hospital Navigation", href: "/visit" },
   { title: "Patient Portal Login", category: "Portal", href: "/login" },
 ];
 

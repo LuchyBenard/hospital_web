@@ -199,6 +199,9 @@ export default function ResourcesPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
+            <Link href="/health-library">
+              <Button variant="secondary">Browse Health Library</Button>
+            </Link>
             <Link href="/login">
               <Button>Sign In to Portal</Button>
             </Link>

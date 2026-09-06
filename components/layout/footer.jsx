@@ -104,6 +104,17 @@ export function Footer() {
               ))}
             </div>
             <div className="pt-2">
+              <span className="text-xs font-semibold text-fg">Quick Visitor Links</span>
+              <div className="mt-1.5 flex flex-col space-y-1.5 text-xs text-mute">
+                <Link href="/visit" className="hover:text-accent hover:underline">
+                  Plan Your Visit
+                </Link>
+                <Link href="/health-library" className="hover:text-accent hover:underline">
+                  Health Library
+                </Link>
+              </div>
+            </div>
+            <div className="pt-2">
               <span className="text-xs font-semibold text-fg">Accreditations</span>
               <ul className="mt-1 space-y-1 text-xs text-mute">
                 {hospitalInfo.accreditations.map((acc, i) => (

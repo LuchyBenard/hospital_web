@@ -587,3 +587,244 @@ export const demoPrescriptions = [
   },
 ];
 
+// Longitudinal vitals & lab trend series for trend timeline visualization
+export const demoVitalTrends = [
+  {
+    id: "trend-ldl",
+    metric: "LDL Cholesterol",
+    unit: "mg/dL",
+    color: "accent",
+    refMin: 50,
+    refMax: 100,
+    goal: "Below 100",
+    notes:
+      "Six-month response to atorvastatin 20 mg. Trending toward goal; next panel scheduled at the annual review.",
+    points: [
+      { label: "Oct '25", value: 128 },
+      { label: "Nov '25", value: 121 },
+      { label: "Dec '25", value: 116 },
+      { label: "Jan '26", value: 112 },
+      { label: "Feb '26", value: 108 },
+      { label: "Mar '26", value: 104 },
+    ],
+  },
+  {
+    id: "trend-glucose",
+    metric: "Fasting Glucose",
+    unit: "mg/dL",
+    color: "success",
+    refMin: 70,
+    refMax: 99,
+    goal: "70 - 99",
+    notes:
+      "Consistent fasting glucose within the normal range. No evidence of impaired fasting glucose on serial panels.",
+    points: [
+      { label: "Oct '25", value: 94 },
+      { label: "Nov '25", value: 92 },
+      { label: "Dec '25", value: 91 },
+      { label: "Jan '26", value: 93 },
+      { label: "Feb '26", value: 89 },
+      { label: "Mar '26", value: 91 },
+    ],
+  },
+  {
+    id: "trend-bp-sys",
+    metric: "Systolic Blood Pressure",
+    unit: "mmHg",
+    color: "warning",
+    refMin: 90,
+    refMax: 120,
+    goal: "Below 120",
+    notes:
+      "Home and office readings improving under lisinopril. Consistent with guideline-directed hypertension management.",
+    points: [
+      { label: "Oct '25", value: 136 },
+      { label: "Nov '25", value: 131 },
+      { label: "Dec '25", value: 128 },
+      { label: "Jan '26", value: 124 },
+      { label: "Feb '26", value: 121 },
+      { label: "Mar '26", value: 118 },
+    ],
+  },
+  {
+    id: "trend-bp-dias",
+    metric: "Diastolic Blood Pressure",
+    unit: "mmHg",
+    color: "info",
+    refMin: 60,
+    refMax: 80,
+    goal: "Below 80",
+    notes:
+      "Diastolic readings stable within the normal range across all recorded visits.",
+    points: [
+      { label: "Oct '25", value: 86 },
+      { label: "Nov '25", value: 84 },
+      { label: "Dec '25", value: 81 },
+      { label: "Jan '26", value: 80 },
+      { label: "Feb '26", value: 79 },
+      { label: "Mar '26", value: 77 },
+    ],
+  },
+  {
+    id: "trend-weight",
+    metric: "Body Weight",
+    unit: "kg",
+    color: "accent",
+    refMin: 55,
+    refMax: 75,
+    goal: "Maintain",
+    notes:
+      "Weight stable over the study period. No clinically significant change requiring intervention.",
+    points: [
+      { label: "Oct '25", value: 68.4 },
+      { label: "Nov '25", value: 68.1 },
+      { label: "Dec '25", value: 67.8 },
+      { label: "Jan '26", value: 67.5 },
+      { label: "Feb '26", value: 67.9 },
+      { label: "Mar '26", value: 67.6 },
+    ],
+  },
+];
+
+// Health education library articles
+export const healthArticles = [
+  {
+    id: "art-001",
+    slug: "managing-blood-pressure-at-home",
+    title: "Managing Blood Pressure Between Visits",
+    category: "Cardiovascular Health",
+    readTime: "6 min read",
+    date: "2026-08-18",
+    author: "Dr. Sarah Jenkins, Cardiology",
+    excerpt:
+      "A practical guide to accurate home blood pressure monitoring, lifestyle levers, and knowing when to call your care team.",
+    sections: [
+      "Measuring your blood pressure correctly at home matters more than how often you measure it. Sit quietly for five minutes first, place the cuff on a bare upper arm at heart level, and take three readings one minute apart. Record the average rather than the lowest number.",
+      "Consistent readings above 130/80 mmHg on a home monitor should be discussed with your physician. Before any medication adjustment, keep a one-week log with morning and evening readings. Bring that log to your next visit.",
+      "Non-drug measures remain the first lever: reducing sodium toward 1,500 to 2,000 mg per day, brisk physical activity most days of the week, and limiting alcohol. Changes show up in readings within two to four weeks when sustained.",
+      "Call your care team the same day if you record two separate readings above 180/120 mmHg, experience chest pain, severe headache, or shortness of breath, or notice vision changes. These are not reasons to wait for a scheduled appointment.",
+    ],
+    takeaways: [
+      "Use the correct cuff size and measure at heart level",
+      "Keep a one-week log before any medication discussion",
+      "Sustained readings above 130/80 warrant a clinic review",
+      "Readings above 180/120 with symptoms require same-day care",
+    ],
+  },
+  {
+    id: "art-002",
+    slug: "understanding-your-lipid-panel",
+    title: "Understanding Your Lipid Panel Results",
+    category: "Cardiovascular Health",
+    readTime: "5 min read",
+    date: "2026-07-30",
+    author: "Dr. Sarah Jenkins, Cardiology",
+    excerpt:
+      "What LDL, HDL, triglycerides, and total cholesterol actually mean, and how your doctor uses them to guide treatment.",
+    sections: [
+      "A standard lipid panel reports four numbers: total cholesterol, LDL (the plaque-forming fraction), HDL (the protective fraction), and triglycerides. The LDL value is usually the main treatment target because it is the component most directly linked to arterial plaque buildup.",
+      "Guidelines base LDL goals on your overall cardiovascular risk, not on a single universal number. For someone with diabetes or a history of heart disease, the target is far lower, often below 70 mg/dL. Your personal goal should come from your clinician, not from a lab reference range.",
+      "Lifestyle changes lower LDL most reliably when combined, not in isolation. Soluble fiber from oats, legumes, and fruits, replacement of saturated fats with unsaturated plant oils, and weight reduction each contribute a few percentage points.",
+      "Statins are prescribed when lifestyle alone is unlikely to reach your goal within a reasonable window. Response is measured at six to twelve weeks with a repeat panel. Side effects are less common than patients often expect, and dose adjustments usually resolve any discomfort.",
+    ],
+    takeaways: [
+      "LDL is the primary treatment target",
+      "Your LDL goal depends on your personal risk profile",
+      "Combined lifestyle changes lower LDL most reliably",
+      "A repeat panel at 6-12 weeks measures statin response",
+    ],
+  },
+  {
+    id: "art-003",
+    slug: "preparing-for-diagnostic-imaging",
+    title: "Preparing for MRI, CT, and Ultrasound Exams",
+    category: "Diagnostics",
+    readTime: "4 min read",
+    date: "2026-06-22",
+    author: "Dr. Michael Thorne, Radiology",
+    excerpt:
+      "What to expect the day of your scan, which preparations matter, and how to make the exam run smoothly.",
+    sections: [
+      "Preparation depends on the exam. For an MRI without contrast there is rarely any fasting requirement, but every implant you have must be disclosed, including pacemakers, cochlear implants, and old surgical clips, even if you think they are safe.",
+      "CT scans with IV contrast generally require fasting for four hours beforehand. Tell the technologist about allergies to iodinated contrast, kidney disease, or metformin use, as each can change how the injection is managed.",
+      "Ultrasound preparation is organ-specific. Abdominal exams often need fasting, while pelvic exams may require a full bladder. Wear comfortable clothing without metal fasteners and arrive 15 minutes early for the safety screening.",
+      "During the exam you will hear loud machine noises during an MRI. Foam ear protection is provided. You can speak with the technologist throughout, and holding still is the most important factor for image quality.",
+    ],
+    takeaways: [
+      "Disclose every implant before an MRI",
+      "Fast four hours before a CT with contrast",
+      "Ultrasound prep depends on the organ being scanned",
+      "Allow 15 minutes for the safety screening",
+    ],
+  },
+  {
+    id: "art-004",
+    slug: "statin-side-effects-facts",
+    title: "Statins, Muscle Symptoms, and What the Evidence Shows",
+    category: "Medication Safety",
+    readTime: "7 min read",
+    date: "2026-05-14",
+    author: "Dr. Sarah Jenkins, Cardiology",
+    excerpt:
+      "A candid look at one of the most common medication concerns in preventive cardiology, with a practical response plan.",
+    sections: [
+      "Muscle aches are the most frequently reported statin side effect, yet clinical trials consistently show they occur at similar rates in placebo groups. The nocebo effect explains part of the perception, but genuine statin-associated muscle symptoms are real and deserve attention.",
+      "When symptoms appear after starting or increasing a statin, the standard approach is to confirm the pattern with a two-week washout, then rechallenge with the same or a lower dose. Symptoms that return only on the drug are the ones that matter.",
+      "Only a small minority who genuinely cannot tolerate any statin need to stop treatment entirely. Alternatives include a lower dose of a more potent statin, a long-acting formulation taken weekly, or a non-statin agent such as ezetimibe.",
+      "Do not stop a statin on your own. Abrupt discontinuation after six months or more of use removes protection against plaque progression, and the conversation about alternatives should happen with your prescriber while you continue the current dose.",
+    ],
+    takeaways: [
+      "Muscle symptoms in trials occur equally with placebo",
+      "Confirm a true pattern with a washout and rechallenge",
+      "Most patients can continue some form of lipid therapy",
+      "Never stop a statin without speaking to your prescriber",
+    ],
+  },
+  {
+    id: "art-005",
+    slug: "healthy-fasting-blood-glucose",
+    title: "Keeping Fasting Blood Glucose in a Healthy Range",
+    category: "Metabolic Health",
+    readTime: "5 min read",
+    date: "2026-04-09",
+    author: "Dr. David Chen, Internal Medicine",
+    excerpt:
+      "Why fasting glucose matters, what the numbers mean, and the habits that keep metabolic health on track.",
+    sections: [
+      "Fasting glucose is measured after at least eight hours without food. A value below 100 mg/dL is considered normal, 100 to 125 mg/dL indicates impaired fasting glucose, commonly called prediabetes, and 126 mg/dL or higher on two occasions meets the threshold for diabetes.",
+      "Prediabetes is reversible in many cases. The Diabetes Prevention Program showed that a 7 percent weight reduction combined with 150 minutes of moderate activity per week reduced progression to diabetes by more than half over three years.",
+      "Carbohydrate quality matters more than carbohydrate quantity. Favor whole grains, legumes, and vegetables over refined grains and added sugars. Protein and fiber at breakfast blunt the morning glucose rise that often shows up in labs.",
+      "Serial testing is how trends are caught. If you have a family history of diabetes, elevated fasting glucose, or a sedentary pattern, request a hemoglobin A1c, which reflects average glucose over the prior two to three months.",
+    ],
+    takeaways: [
+      "Fasting glucose below 100 mg/dL is normal",
+      "Prediabetes is reversible with weight and activity changes",
+      "Carbohydrate quality matters as much as quantity",
+      "A1c gives a three-month average picture",
+    ],
+  },
+  {
+    id: "art-006",
+    slug: "knee-recovery-after-therapy",
+    title: "Recovering After Knee Injury: Expected Milestones",
+    category: "Orthopedics",
+    readTime: "5 min read",
+    date: "2026-03-02",
+    author: "Dr. David Chen, Orthopedics",
+    excerpt:
+      "A realistic timeline for soft tissue knee recovery, the difference between good pain and signal pain, and when to push on.",
+    sections: [
+      "After a meniscal sprain or similar soft tissue injury, the first two weeks focus on reducing swelling, restoring range of motion, and offloading the joint. Ice, elevation, and painless range-of-motion exercises are the priority before any strengthening begins.",
+      "A common mistake is to return to activity as soon as walking feels comfortable. Painless walking rarely means the tissue has remodeled. Strength retraining should progress through guided phases: isometric, then closed-chain, then dynamic loading.",
+      "Distinguish good discomfort from signal pain. Muscle soreness during strengthening is expected. Sharp pain, locking, giving way, or swelling that reappears more than two hours after activity are signals to back off and contact your therapist.",
+      "Most non-operative soft tissue knee injuries tolerate a return to light sport within six to eight weeks, with full return often closer to twelve weeks. Follow-up imaging is only ordered if clinical milestones stall for two consecutive weeks.",
+    ],
+    takeaways: [
+      "Control swelling and restore motion before strengthening",
+      "Progress through guided strengthening phases",
+      "Locking or giving way are reasons to stop and check in",
+      "Allow 6-8 weeks for light sport in most cases",
+    ],
+  },
+];
+

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { procedureEstimates } from "@/lib/models/billing";
+import { InsuranceVerificationWidget } from "@/components/hospital/insurance-verification";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -131,6 +132,11 @@ export default function CostEstimatorPage() {
             </Link>
           </div>
         </Card>
+      </div>
+
+      {/* Insurance Coverage Verification Widget */}
+      <div className="mt-10">
+        <InsuranceVerificationWidget />
       </div>
     </main>
   );
